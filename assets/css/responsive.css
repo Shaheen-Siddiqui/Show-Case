@@ -1,0 +1,441 @@
+/*---------------------------------------------------------------------------------
+    Responsive css
+-----------------------------------------------------------------------------------*/
+@media only screen and (max-width: 1366px) {
+  .ms-home .ms-detail .info h1 {
+    font-size: 38px;
+    line-height: 42px;
+  }
+  .ms-home .ms-detail .info h2 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .section-title h2 {
+    font-size: 35px;
+    line-height: 35px;
+  }
+
+  .ms-about-detail h4 {
+    font-size: 17px;
+    line-height: 26px;
+  }
+
+  .section-title .ligh-title {
+    font-size: 75px;
+  }
+
+  .box-front .content-wrap h3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .box-back .content-wrap h3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .education h4, .experiense h4 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .achive .count_block h3 {
+    font-size: 45px;
+    line-height: 55px;
+  }
+
+  .portfolio-tabs ul li {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 1199px) {
+  .ms-home .profile-img img {
+    max-width: 300px;
+  }
+  .ms-home .ms-detail .info h1 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .ms-home .ms-detail .info h2 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .section-title h2 {
+    font-size: 33px;
+    line-height: 33px;
+  }
+
+  .ms-about-detail h4 {
+    font-size: 16px;
+    line-height: 25px;
+  }
+  .ms-about-detail .ms-text {
+    font-size: 15px;
+  }
+
+  .ms-about-info ul li {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .education h4, .experiense h4 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .achive .count_block h3 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .portfolio-tabs ul li {
+    font-size: 14px;
+  }
+
+  .ms-news-section .news-info .detail h3 a {
+    font-size: 15px;
+    line-height: 21px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .ms-home {
+    height: 100%;
+    position: relative;
+  }
+  .ms-home .ms-row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .ms-home .border-content {
+    width: 100%;
+    height: 600px;
+    padding: 50px 50px 0 50px;
+  }
+  .ms-home .border-content-color {
+    padding: 0 50px 50px 50px;
+  }
+  .ms-home .ms-detail {
+    border-top: 0;
+    border-left: 1px solid #17181c;
+  }
+  .ms-home .ms-detail .info {
+    text-align: center;
+  }
+  .ms-home .profile-img img {
+    max-width: 250px;
+  }
+  .ms-home .profile-img .profile-detail ul {
+    display: none;
+  }
+
+  .section-title .ligh-title {
+    display: none;
+  }
+
+  .ms-home .border-content {
+    padding: 15px 15px 0 15px;
+  }
+  .ms-home .border-content-color {
+    padding: 0 15px 15px 15px;
+  }
+
+  .ms-navigation ul {
+    padding-top: 15px;
+  }
+  .ms-navigation ul li {
+    border-color: transparent;
+  }
+  .ms-navigation ul li:last-child {
+    border-color: transparent;
+  }
+  .ms-navigation ul li a span {
+    padding-left: 10px;
+    display: block;
+  }
+  .ms-navigation ul li .noty {
+    display: none;
+  }
+
+  .sidebar-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .header-overlay {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 17;
+  }
+
+  header {
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: #fff;
+    z-index: 18;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  header .ms-social {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .ms-cursor, .ms-cursor-2, .ms-hover-cursor, .ms-cursorinnerhover {
+    display: none;
+  }
+
+  .padding-tb-80 {
+    padding: 70px 0;
+  }
+
+  .m-t-80 {
+    margin-top: 70px;
+  }
+
+  .p-t-80 {
+    padding-top: 70px;
+  }
+
+  .ms-about-detail {
+    margin-bottom: 70px;
+  }
+
+  .education {
+    margin-bottom: 70px;
+  }
+
+  .ms-home .ms-detail .info h1 {
+    font-size: 34px;
+    line-height: 38px;
+  }
+  .ms-home .ms-detail .info h2 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .section-title h2 {
+    font-size: 31px;
+    line-height: 31px;
+  }
+
+  .ms-about-detail h4 {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .ms-about-detail ul li {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .box-front .content-wrap h3, .box-back .content-wrap h3 {
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  .education h4, .experiense h4 {
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .achive .count_block h3 {
+    font-size: 38px;
+    line-height: 48px;
+  }
+}
+@media only screen and (max-height: 768px) {
+  .ms-home .profile-img img {
+    max-width: 500px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .ms-home .border-content-color {
+    width: 100%;
+  }
+  .ms-home .ms-detail .info h1 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .section-title {
+    padding-bottom: 40px;
+  }
+  .section-title h2 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+
+  .ms-about-detail h4 {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .box-front .content-wrap h3, .box-back .content-wrap h3 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .education h4, .experiense h4 {
+    margin-bottom: 20px;
+  }
+
+  .achive .count_block h3 {
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  .padding-tb-80 {
+    padding: 50px 0;
+  }
+
+  .m-t-80 {
+    margin-top: 50px;
+  }
+
+  .p-t-80 {
+    padding-top: 50px;
+  }
+
+  .ms-about-detail {
+    margin-bottom: 50px;
+  }
+
+  .education {
+    margin-bottom: 50px;
+  }
+
+  .portfolio-tabs ul li {
+    padding: 10px;
+    margin: 0;
+  }
+
+  .ms-contact-section form {
+    margin-top: 50px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .ms-home .ms-detail .info h1 {
+    font-size: 30px;
+    line-height: 34px;
+  }
+  .ms-home .ms-detail .info h2 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .section-title h2 {
+    font-size: 26px;
+    line-height: 26px;
+  }
+
+  .box-front .content-wrap h3, .box-back .content-wrap h3 {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .ms-skill-progress h5 {
+    font-size: 13px;
+  }
+
+  .achive .count_block h3 {
+    font-size: 34px;
+    line-height: 44px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .ms-home .border-content {
+    width: 100%;
+    height: 500px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .ms-home .border-content {
+    padding: 12px 12px 0 12px;
+  }
+  .ms-home .border-content-color {
+    padding: 0 12px 12px 12px;
+  }
+  .ms-home .ms-detail {
+    padding: 50px 30px;
+  }
+  .ms-home .ms-detail .info a {
+    margin: 0 2px;
+  }
+  .ms-home .ms-detail .info h1 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .ms-home .profile-img img {
+    max-width: 200px;
+  }
+
+  .ms-about-info ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .ms-about-info ul li span {
+    margin-bottom: 5px;
+  }
+  .ms-about-info ul li span b {
+    display: none;
+  }
+
+  .achive .count_block h3 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .nav-toggle {
+    right: 12px;
+    top: 12px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .ms-home .border-content {
+    width: 100%;
+    height: 450px;
+  }
+  .ms-home .ms-detail .info h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .achive .count_block h3 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .achive .count_block h3 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .section-title h2 {
+    font-size: 25px;
+    line-height: 25px;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */

@@ -1,0 +1,1423 @@
+{
+  "blogs": {
+    "-NBEJzJ1vmOd7ASJk-_Q": {
+      "content": "<p>&#10;    More recent additions to the JavaScript language are async functions and the await keyword, added in ECMAScript&#10;    2017. These features basically act as syntactic sugar on top of promises, making asynchronous code easier to write&#10;    and to read afterwards. They make async code look more like old-school synchronous code, so they're well worth&#10;    learning. This article gives you what you need to know.&#10;</p>&#10;<br><br>&#10;<small>There are two parts to using async/await in your code.</small>&#10;<br>&#10;<h3>The async keyword</h3>&#10;<p>&#10;    First of all we have the async keyword, which you put in front of a function declaration to turn it into an async&#10;    function. An async function is a function that knows how to expect the possibility of the await keyword being used&#10;    to invoke asynchronous code.&#10;</p>&#10;<br>&#10;<pre>    <code>&#10;        async function hello() { return &#34;Hello&#34; };&#10;        hello().then((value) =&gt; console.log(value))&#10;    </code>&#10;</pre>&#10;&#10;&#10;<blockquote>&#10;    Ah. Invoking the function now returns a promise. This is one of the traits of async functions &#8212; their return values&#10;    are guaranteed to be converted to promises. <br>&#10;    To actually consume the value returned when the promise fulfills, since it is returning a promise, we could use a&#10;    .then() block: <br> <br>&#10;    <p class=\"text-teal\">&#10;        So the async keyword is added to functions to tell them to return a promise rather than directly returning the&#10;        value.&#10;    </p>&#10;</blockquote>&#10;&#10;&#10;<br><br>&#10;<h3>&#10;    The await keyword&#10;</h3>&#10;<p>&#10;    The advantage of an async function only becomes apparent when you combine it with the await keyword. await only&#10;    works inside async functions within regular JavaScript code, however it can be used on its own with JavaScript&#10;    modules.&#10;</p>&#10;<p>&#10;    await can be put in front of any async promise-based function to pause your code on that line until the promise&#10;    fulfills, then return the resulting value.&#10;</p>&#10;<p>&#10;    You can use await when calling any function that returns a Promise, including web API functions.&#10;</p>&#10;<small>Here is a trivial example:</small>&#10;<br>&#10;<pre>    <code>&#10;        async function hello() {&#10;            return greeting = await Promise.resolve(&#34;Hello&#34;);&#10;          };&#10;          &#10;          hello().then(alert);&#10;    </code>&#10;</pre>&#10;<br><br>&#10;<h3>&#10;    Rewriting promise code with async/await&#10;</h3>&#10;<h5>&#10;    Let's look at a simple fetch example&#10;</h5>&#10;<br>&#10;<pre>    <code>&#10;        fetch('coffee.jpg')&#10;        .then(response =&gt; {&#10;          if (!response.ok) {&#10;            throw new Error(`HTTP error! status: ${response.status}`);&#10;          }&#10;          return response.blob();&#10;        })&#10;        .then(myBlob =&gt; {&#10;          let objectURL = URL.createObjectURL(myBlob);&#10;          let image = document.createElement('img');&#10;          image.src = objectURL;&#10;          document.body.appendChild(image);&#10;        })&#10;        .catch(e =&gt; {&#10;          console.log('There has been a problem with your fetch operation: ' + e.message);&#10;        });&#10;    </code>&#10;</pre>&#10;&#10;&#10;<br><br>&#10;<h5>&#10;    By now, you should have a reasonable understanding of promises and how they work, but let's convert this to use&#10;    async/await to see how much simpler it makes things:&#10;</h5>&#10;<br>&#10;<pre>    <code>&#10;        async function myFetch() {&#10;            let response = await fetch('coffee.jpg');&#10;          &#10;            if (!response.ok) {&#10;              throw new Error(`HTTP error! status: ${response.status}`);&#10;            }&#10;          &#10;            let myBlob = await response.blob();&#10;          &#10;            let objectURL = URL.createObjectURL(myBlob);&#10;            let image = document.createElement('img');&#10;            image.src = objectURL;&#10;            document.body.appendChild(image);&#10;          }&#10;          &#10;          myFetch()&#10;          .catch(e =&gt; {&#10;            console.log('There has been a problem with your fetch operation: ' + e.message);&#10;          });&#10;    </code>&#10;</pre>",
+      "createdAt": "Tue Sep 06 2022",
+      "description": "Making asynchronous programming easier with async and await",
+      "id": "-NBEJzJ1vmOd7ASJk-_Q",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/1_3kAwfTZXxNynBOB5O6VQtg_1623948533782?alt=media&token=d0a5a60c-de4b-4a9c-8620-b2b2e979d207",
+      "name": "Async await",
+      "pos": 11,
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "views": 115
+    },
+    "-NBEJzJOrNSyF5zBWm3R": {
+      "content": "<p>&#10;    The includes() method determines whether an array includes a certain value among its entries, returning true or&#10;    false as appropriate.&#10;</p>&#10;<br><br>&#10;&#10;&#10;<h3>JavaScript Demo: Array.includes()</h3>&#10;<br>&#10;<pre>   &#10; <code>      const array1 = [1, 2, 3];&#10;        console.log(array1.includes(2));&#10;        // expected output: true&#10;        &#10;        const pets = ['cat', 'dog', 'bat'];&#10;        &#10;        console.log(pets.includes('cat'));&#10;        // expected output: true&#10;        &#10;        console.log(pets.includes('at'));&#10;        // expected output: false&#10;    </code>&#10;</pre>&#10;&#10;&#10;<blockquote>&#10;    inArray returns the index of the element in the array, not a boolean indicating if the item exists in the array. If the element was not found, -1 will be returned.&#10;</blockquote>",
+      "createdAt": "Tue Sep 06 2022",
+      "description": "Array.prototype.includes()",
+      "id": "-NBEJzJOrNSyF5zBWm3R",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/javascript-array-includes_1624002257069?alt=media&token=fdcd73b4-3402-46a5-8549-52ece3cc58b5",
+      "name": "Array.includes()",
+      "pos": 12,
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBOvqGfehfBnpKK-QwO"
+      ],
+      "views": 41
+    },
+    "-NBEJzJYsOZcy7ynzASF": {
+      "content": "<p>&#10;    The filter() method creates a new array with all elements that pass the test implemented by the provided function.&#10;    The arr.filter() method is used to create a new array from a given array consisting of only those elements from the given array which satisfy a condition set by the argument method. &#10;Syntax: &#10;</p>&#10;<br><br>&#10;&#10;&#10;<h3>JavaScript Demo: Array.filter()</h3>&#10;<br>&#10;<pre>     <code>&#10;const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];&#10;&#10;&#10;const result = words.filter(word =&gt; word.length &gt; 6);&#10;&#10;&#10;console.log(result);&#10;// expected output: Array [&#34;exuberant&#34;, &#34;destruction&#34;, &#34;present&#34;]&#10;&#10;&#10;    </code>&#10;</pre>&#10;&#10;&#10;<blockquote>&#10;    filter() calls a provided callbackFn function once for each element in an array, and constructs a new array of all&#10;    the values for which callbackFn returns a value that coerces to true. callbackFn is invoked only for indexes of the&#10;    array which have assigned values; it is not invoked for indexes which have been deleted or which have never been&#10;    assigned values. Array elements which do not pass the callbackFn test are skipped, and are not included in the new&#10;    array.&#10;</blockquote>&#10;<br>&#10;<pre>    <code>&#10;// Arrow function&#10;filter((element) =&gt; { ... } )&#10;filter((element, index) =&gt; { ... } )&#10;filter((element, index, array) =&gt; { ... } )&#10;&#10;&#10;// Callback function&#10;filter(callbackFn)&#10;filter(callbackFn, thisArg)&#10;&#10;&#10;// Inline callback function&#10;filter(function callbackFn(element) { ... })&#10;filter(function callbackFn(element, index) { ... })&#10;filter(function callbackFn(element, index, array){ ... })&#10;filter(function callbackFn(element, index, array) { ... }, thisArg)&#10;    </code>&#10;</pre>",
+      "createdAt": "Tue Sep 06 2022",
+      "description": "Array.prototype.filter()",
+      "id": "-NBEJzJYsOZcy7ynzASF",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/JavaScript-Filter-Array_1624002625974?alt=media&token=fa1b0f18-2124-467f-a14e-5d81d5866eaf",
+      "name": "Array.filter()",
+      "pos": 13,
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "views": 48
+    },
+    "-NBEJzJ_-dcDIIGWVyPd": {
+      "content": "<p>&#10;    The find() method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.&#10;</p>&#10;<br><br>&#10;&#10;&#10;<h3>JavaScript Demo: Array.find()</h3>&#10;<br>&#10;<pre>     <code>&#10;        const array1 = [5, 12, 8, 130, 44];&#10;&#10;&#10;        const found = array1.find(element =&gt; element &gt; 10);&#10;        &#10;        console.log(found);&#10;        // expected output: 12&#10;        &#10;&#10;&#10;    </code>&#10;</pre>&#10;&#10;&#10;<blockquote>&#10;   <p><i class=\"fa fa-code text-teal\"></i> If you need the index of the found element in the array, use findIndex().</p>&#10;   <p><i class=\"fa fa-code text-teal\"></i> If you need to find the index of a value, use Array.prototype.indexOf(). (It&#8217;s similar to findIndex(), but checks each element for equality with the value instead of using a testing function.)</p>&#10;   <p><i class=\"fa fa-code text-teal\"></i> If you need to find if a value exists in an array, use Array.prototype.includes(). Again, it checks each element for equality with the value instead of using a testing function.</p>&#10;   <p><i class=\"fa fa-code text-teal\"></i> If you need to find if any element satisfies the provided testing function, use Array.prototype.some().</p>&#10;</blockquote>&#10;<br>",
+      "createdAt": "Tue Sep 06 2022",
+      "description": "Array.prototype.find()",
+      "id": "-NBEJzJ_-dcDIIGWVyPd",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/maxresdefault_1624007950240?alt=media&token=c574957b-0a6d-4498-b39d-d556b7b4bf3e",
+      "name": "Array.find()",
+      "pos": 14,
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "views": 40
+    },
+   
+    "-NBEJzJflEi9_IfJY0JJ": {
+      "content": "<h3>&#10;   # Installation&#10;</h3>&#10;<p>&#10;    Importing CDN url to your HTML file&#10;</p>&#10;<div class=\"highlight html\">&#10;    <pre class=\"editor editor-colors\"><div class=\"line\"><span class=\"text html basic\"><span class=\"meta tag any html\"><span class=\"punctuation definition tag html\"><span>&lt;</span></span><span class=\"entity name tag html\"><span>script</span></span><span>&#160;</span><span class=\"entity other attribute-name html\"><span>src</span></span><span>=</span><span class=\"string quoted double html\"><span class=\"punctuation definition string begin html\"><span>&#34;</span></span><span class=\"markup underline link https hyperlink\"><span>https://unpkg.com/sweetalert/dist/sweetalert.min.js</span></span><span class=\"punctuation definition string end html\"><span>&#34;</span></span></span><span class=\"punctuation definition tag html\"><span>&gt;</span><span class=\"meta scope between-tag-pair html\"><span>&lt;</span></span><span>/</span></span><span class=\"entity name tag html\"><span>script</span></span><span class=\"punctuation definition tag html\"><span>&gt;</span></span></span></span></div></pre>&#10;</div>&#10;&#10;&#10;<br><br>&#10;<h3>&#10;    # Getting started&#10; </h3>&#10;&#10;&#10; <h4>Showing an alert</h4>&#10; <p>&#10;    After importing the files into your application, you can call the swal function (make sure it's called after the DOM has loaded!)&#10; </p>&#10;&#10;&#10;<div class=\"text-center\">&#10;    <img src=\"https://www.drupal.org/files/project-images/alert_1.png\" alt=\"\" class=\"img-fluid w-50 mx-auto\">&#10;</div>&#10;<br><br>&#10; <pre>     <code>&#10;        swal(&#34;Good job!&#34;, &#34;You clicked the button!&#34;, &#34;success&#34;);&#10;     </code>&#10; </pre>&#10;&#10;&#10; <br>&#10; <a class=\"btn btn-link\" href=\"https://sweetalert.js.org/guides/#installation\">Read more on official sweetAlert website.</a>&#10; <br>",
+      "createdAt": "Tue Sep 06 2022",
+      "description": "SweetAlert A beautiful replacement for JavaScript’s “alert”.",
+      "id": "-NBEJzJflEi9_IfJY0JJ",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/sweetalert-690x332_1624021743445?alt=media&token=98007c2b-890b-4b9c-b5d6-abbed0a7af86",
+      "name": "SweetAlert JS",
+      "pos": 10,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBP1MUdVcaAuURXispK"
+      ],
+      "views": 37
+    },
+    
+    "-NBEJzK3YwdTCu-9rCiZ": {
+      "content": "<p>&#10;    A website visitor is someone who views/goes to your website. In our weekly email stats this is the number of unique&#10;    visits your website had during that weekly period. If that visitor views multiple pages on your website, that still&#10;    only counts as 1 visit. Additionally, if the visitor leaves your website and comes back within that same week period&#10;    this is all still counted only once as 1 visitor.&#10;</p>&#10;&#10;&#10;<br>&#10;<img src=\"https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-22%20at%202.44.41%20AM_1624310372663?alt=media&amp;token=482e9ed1-19ba-4590-a5a4-5f8c8245e977\" alt=\"\" class=\"img-fluid w-100\">&#10;<br>&#10;&#10;&#10;<h2>&#10;    Counting Visits To Your Website&#10;</h2>&#10;<br>&#10;<p>&#10;    There are different ways to count visits to a website. In order to count visits, some code needs to be present to collect data that will measure &#8220;hits.&#8221; As user&#8217;s attention has become increasingly focused on privacy, many people utilize blockers or browsers which prevent their internet activity from being measured by Google and some other services. &#10;</p>&#10;<p>&#10;    <b>Google Analytics</b> (GA) is the standard for measuring website traffic. GA provides an amazing amount of data and is the best way to count website visits for curiosity and to measure results of marketing efforts.&#10;</p>&#10;<p>&#10;    You can install a statistics package on your server on your own to check website visitors. This would allow a more accurate accounting of website visitors.&#10;</p>&#10;<p>&#10;    <b>AWStats</b> is a program that is included by many web hosts who use cPanel, however, you can also install it yourself. The visitor stats this package provides should provide a reasonable estimate of visits for the purposes of sizing a hosting plan.&#10;<br><br>------------------------------------------------------------<br></p><div><div><div><span>&lt;!</span><span>DOCTYPE</span> <span>html</span><span>&gt;</span></div><div><span>&lt;</span><span>html</span> <span>lang</span>=<span>&#34;en&#34;</span><span>&gt;</span></div><br><div><span>&lt;</span><span>head</span><span>&gt;</span></div><div>    <span>&lt;</span><span>meta</span> <span>charset</span>=<span>&#34;UTF-8&#34;</span><span>&gt;</span></div><div>    <span>&lt;</span><span>meta</span> <span>http-equiv</span>=<span>&#34;X-UA-Compatible&#34;</span> <span>content</span>=<span>&#34;IE=edge&#34;</span><span>&gt;</span></div><div>    <span>&lt;</span><span>meta</span> <span>name</span>=<span>&#34;viewport&#34;</span> <span>content</span>=<span>&#34;width=device-width, initial-scale=1.0&#34;</span><span>&gt;</span></div><div>    <span>&lt;</span><span>title</span><span>&gt;</span>Document<span>&lt;/</span><span>title</span><span>&gt;</span></div><div><span>&lt;/</span><span>head</span><span>&gt;</span></div><br><div><span>&lt;</span><span>body</span><span>&gt;</span></div><br><div>    <span>&lt;</span><span>img</span> <span>src</span>=<span>&#34;&#34;</span> <span>id</span>=<span>&#34;img&#34;</span> <span>alt</span>=<span>&#34;&#34;</span><span>&gt;</span></div><div>    <span>&lt;</span><span>button</span> <span>onclick</span>=<span>&#34;</span><span>handleNextClick</span><span>()&#34;</span><span>&gt;</span>next<span>&lt;/</span><span>button</span><span>&gt;</span></div><div><span>&lt;/</span><span>body</span><span>&gt;</span></div><br><div><span>&lt;</span><span>script</span><span>&gt;</span></div><div>    <span>let</span> <span>allImages</span> = [];</div><div>    <span>let</span> <span>currentImageIndex</span> = <span>0</span>;</div><br><br><div>    <span>const</span> <span>main</span> = <span>async</span> () <span>=&gt;</span> {</div><div>        <span>const</span> <span>res</span> = <span>await</span> <span>fetch</span>(<span>'https://dummyjson.com/products'</span>);</div><div>        <span>const</span> <span>data</span> = <span>await</span><span> </span><span>res</span>.<span>json</span>();</div><div>        <span>const</span> {</div><div>            <span>products</span></div><div>        } = <span>data</span>;</div><br><div>        <span>const</span> <span>productsFilterByPrice</span> = (<span>price</span>) <span>=&gt;</span> {</div><div>            <span>const</span> <span>result</span> =<span> </span><span>products</span>.<span>filter</span>((<span>product</span>) <span>=&gt;</span> {</div><div>                <span>if</span> (<span>product</span>.<span>price</span> &lt;= <span>price</span>) {</div><div>                    <span>return</span> <span>product</span></div><div>                }</div><div>            });</div><div>            <span>return</span> <span>result</span></div><div>        }</div><br><div>        <span>console</span>.<span>log</span>(<span>productsFilterByPrice</span>(<span>10</span>));</div><br><div>        <span>const</span> <span>getProductById</span> = (<span>id</span>) <span>=&gt;</span> {</div><div>            <span>const</span> <span>result</span> =<span> </span><span>products</span>.<span>find</span>((<span>product</span>) <span>=&gt;</span> {</div><div>                <span>if</span> (<span>product</span>.<span>id</span> === <span>id</span>) {</div><div>                    <span>return</span> <span>product</span></div><div>                }</div><div>            });</div><div>            <span>return</span> <span>result</span>;</div><div>        }</div><div>        <span>console</span>.<span>log</span>(<span>getProductById</span>(<span>5</span>));</div><br><div>        <span>const</span> <span>addTen</span> = (<span>num</span>) <span>=&gt;</span> {</div><div>            <span>const</span> <span>result</span> =<span> </span><span>products</span>.<span>map</span>((<span>product</span>) <span>=&gt;</span> {</div><div>                <span>return</span> {</div><div>                    ...<span>product</span>,</div><div>                    <span>price</span>:<span> </span><span>product</span>.<span>price</span> + <span>num</span></div><div>                }</div><div>            })</div><div>            <span>return</span> <span>result</span>;</div><div>        }</div><br><div>        <span>console</span>.<span>log</span>(<span>addTen</span>(<span>100</span>))</div><br><div>        <span>const</span> <span>prodNameToArr</span> = () <span>=&gt;</span> {</div><div>            <span>const</span> <span>result</span> =<span> </span><span>products</span>.<span>map</span>((<span>product</span>) <span>=&gt;</span> {</div><div>                <span>return</span><span> </span><span>product</span>.<span>thumbnail</span></div><div>            })</div><br><div>            <span>return</span> <span>result</span>;</div><div>        }</div><br><br><div>        <span>allImages</span> = <span>prodNameToArr</span>();</div><div>        <span>console</span>.<span>log</span>(<span>allImages</span>)</div><div>        <span>document</span>.<span>getElementById</span>(<span>'img'</span>).<span>src</span> =<span> </span><span>allImages</span>[<span>0</span>]</div><br><div>    }</div><br><div>    <span>function</span> <span>handleNextClick</span>() {</div><div>        <span>const</span> <span>img</span> =<span> </span><span>allImages</span>[<span>currentImageIndex</span> + <span>1</span>];</div><div>        <span>document</span>.<span>getElementById</span>(<span>'img'</span>).<span>src</span> = <span>img</span>;</div><div>        <span>currentImageIndex</span>++;</div><div>    }</div><br><br><div>    <span>main</span>();</div><div><span>&lt;/</span><span>script</span><span>&gt;</span></div><br><div><span>&lt;/</span><span>html</span><span>&gt;</span></div></div><br><br></div>",
+      "createdAt": "Tue Sep 06 2022",
+      "description": "Counting the total visitors on my website and picturize the data by using chart.js graph",
+      "id": "-NBEJzK3YwdTCu-9rCiZ",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-22%20at%202.44.41%20AM_1624310372663?alt=media&token=482e9ed1-19ba-4590-a5a4-5f8c8245e977",
+      "name": "Total Visitors",
+      "pos": 17,
+      "views": 105
+    },
+    "-NBEJzK9AzmR5aVftDud": {
+      "content": "&#10;&#10;&#10;    <p>&#10;      <b>&#10;        There's nothing more frustrating than opening an interview prep book, only to find a bunch of solutions in a&#10;        programming language that you don't know. That's why all of our questions come with complete written solutions&#10;        in 9 popular languages.&#10;&#10;&#10;      </b>&#10;&#10;&#10;    </p>&#10;<div class=\"text-center\">&#10;<a class=\"btn btn-danger\" href=\"https://suboorkhan.in/cube/\">LIVE DEMO</a></div>&#10;&#10;&#10;<br><br>&#10;<h1>How did i make it?</h1>&#10;&#10;&#10;<br><br>&#10;<h4>Index.HTML</h4>&#10;<pre>    <code>&#10;&#10;&#10;&#10;        &lt;!DOCTYPE html&gt;&#10;&#10;&#10;         &lt;html lang=&#34;en&#34;&gt;&#10;          &lt;head&gt;&#10;          &lt;meta charset=&#34;UTF-8&#34;&gt;&#10;          &lt;title&gt;&#10;         CodePen - Basic Three.js Example&lt;/title&gt;&#10;          &lt;link rel=&#34;stylesheet&#34; href=&#34;./style.css&#34;&gt;&#10;          &lt;link rel=&#34;stylesheet&#34; &#10;          href=&#34;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&#34;&#10;           integrity=&#34;sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm&#34; &#10;           crossorigin=&#34;anonymous&#34;&gt;&#10;          &lt;/head&gt;&#10;          &lt;body&gt;&#10;          &lt;div class=&#34;container mt&#34;&gt;&#10;          &lt;div id=&#34;cube&#34;&gt;&#10;          &lt;/div&gt;&#10;          &lt;p&gt;&#10;          &lt;b&gt;&#10;          There's nothing more frustrating than opening an interview prep book, only to find a &#10;          bunch of solutions in a programming language that you don't know. That's why all of our questions&#10;           come with complete written solutions in 9 popular languages. &lt;/b&gt;&#10;          &lt;/p&gt;&#10;          &lt;/div&gt;&#10;          &lt;script src='https://threejs.org/build/three.js'&gt;&#10;         &lt;/script&gt;&#10;          &lt;script src=&#34;./script.js&#34;&gt;&#10;         &lt;/script&gt;&#10;          &lt;/body&gt;&#10;          &lt;/html&gt;&#10;&#10;&#10;    </code>&#10;</pre>&#10;&#10;&#10;<br><br>&#10;<h4>style.css</h4>&#10;<pre>    <code>&#10;&#10;&#10;    canvas { width: auto !important; height: 550px !important }&#10;&#10;&#10;    #cube {&#10;        max-width: 100px !important;&#10;    }&#10;    </code>&#10;</pre>&#10;&#10;&#10;<br><br>&#10;<h4>script.js</h4>&#10;<pre>    <code>&#10;&#10;&#10;        let camera, scene, renderer, cube;&#10;&#10;&#10;        function init() {&#10;            // Init scene&#10;            scene = new THREE.Scene();&#10;        &#10;            // Init camera (PerspectiveCamera)&#10;            camera = new THREE.PerspectiveCamera(&#10;                75,&#10;                window.innerWidth / window.innerHeight,&#10;                0.1,&#10;                1000&#10;            );&#10;        &#10;            // Init renderer&#10;            renderer = new THREE.WebGLRenderer({ antialias: true });&#10;            console.log(renderer);&#10;            renderer.setClearColor ( &#34;white&#34;, 1 )&#10;        &#10;            // Set size (whole window)&#10;            renderer.setSize(window.innerWidth, window.innerHeight);&#10;        &#10;            // Render to canvas element&#10;            document.getElementById(&#34;cube&#34;).appendChild(renderer.domElement);&#10;        &#10;            // Init BoxGeometry object (rectangular cuboid)&#10;            const geometry = new THREE.BoxGeometry(3, 3, 3);&#10;        &#10;            // Create material with color&#10;            // const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });&#10;        &#10;            // Add texture - &#10;            const texture = new THREE.TextureLoader().load('img/react.png');&#10;        &#10;            // Create material with texture&#10;            var materialArray = [];&#10;            materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture('img/react.png' ), side: THREE.DoubleSide, transparent: true, opacity: 0.9 }));&#10;            materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/angular.png' ), side: THREE.DoubleSide, transparent: true, opacity: 0.9 }));&#10;            materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture('img/vue.jpeg' ), side: THREE.DoubleSide, transparent: true, opacity: 0.9 }));&#10;            materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/laravel.jpeg' ), side: THREE.DoubleSide, transparent: true, opacity: 0.9 }));&#10;            materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture('img/go.png' ), side: THREE.DoubleSide, transparent: true, opacity: 0.9 }));&#10;            materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'img/node.png' ), side: THREE.DoubleSide, transparent: true, opacity: 0.9 }));&#10;        &#10;        &#10;            // Create mesh with geo and material&#10;            cube = new THREE.Mesh(geometry, materialArray);&#10;            // Add to scene&#10;            scene.add(cube);&#10;        &#10;            // Position camera&#10;            camera.position.z = 5;&#10;        }&#10;        &#10;        // Draw the scene every time the screen is refreshed&#10;        function animate() {&#10;            requestAnimationFrame(animate);&#10;        &#10;            // Rotate cube (Change values to change speed)&#10;            cube.rotation.y += 0.01;&#10;            cube.rotation.x = 0.1;&#10;        &#10;            renderer.render(scene, camera);&#10;        &#10;        }&#10;        &#10;        function onWindowResize() {&#10;            // Camera frustum aspect ratio&#10;            camera.aspect = window.innerWidth / window.innerHeight;&#10;            // After making changes to aspect&#10;            camera.updateProjectionMatrix();&#10;            // Reset size&#10;            renderer.setSize(window.innerWidth, window.innerHeight);&#10;        }&#10;        &#10;        window.addEventListener('resize', onWindowResize, false);&#10;        &#10;        init();&#10;        animate();&#10;    </code>&#10;</pre>&#10;&#10;&#10;&#10;&#10;&#10;",
+      "createdAt": "Tue Sep 06 2022",
+      "description": "Inspired by AlgoExpert website UI",
+      "id": "-NBEJzK9AzmR5aVftDud",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-24%20at%205.38.55%20PM_1624536731610?alt=media&token=356f114d-917e-4cfa-a4c3-47d15633b62f",
+      "name": "Algo Expert Cube Clone ",
+      "pos": 18,
+      "views": 33
+    },
+   
+    "-NBEJzKIyzTH2poKdaFO": {
+      "content": "<h3>Form.JSX</h3>&#10;<code><pre>import React, { Component } from &#34;react&#34;;&#10;import AutoCompleteInput from &#34;./AutoCompleteInput&#34;;&#10;&#10;&#10;export default class AddTodo extends Component {&#10;  constructor(props) {&#10;    super(props);&#10;    this.state = {&#10;      value: &#34;&#34;,&#10;      items: [],&#10;    };&#10;  }&#10;&#10;&#10;  componentDidMount() {&#10;    fetch(&#34;https://jsonplaceholder.typicode.com/todos&#34;)&#10;      .then((response) =&gt; response.json())&#10;      .then((json) =&gt; {&#10;        const el = json.map((el) =&gt; el.title);&#10;        this.setState({&#10;          items: el,&#10;        });&#10;      });&#10;  }&#10;&#10;&#10;  render() {&#10;    return (&#10;      &lt;&gt;&#10;        &#10;          &#10;          &#10;        &#10;      &#10;    );&#10;  }&#10;}&#10;</pre></code>&#10;&#10;&#10;&#10;<h3>AutoInput.js</h3>&#10;&#10;<code><pre>  import React, { Component, Fragment } from &#34;react&#34;;&#10;import PropTypes from &#34;prop-types&#34;;&#10;&#10;&#10;class AutocompleteInput extends Component {&#10;  static propTypes = {&#10;    suggestions: PropTypes.instanceOf(Array)&#10;  };&#10;&#10;&#10;  static defaultProps = {&#10;    suggestions: []&#10;  };&#10;&#10;&#10;  constructor(props) {&#10;    super(props);&#10;&#10;&#10;    this.state = {&#10;      // The active selection's index&#10;      activeSuggestion: 0,&#10;      // The suggestions that match the user's input&#10;      filteredSuggestions: [],&#10;      // Whether or not the suggestion list is shown&#10;      showSuggestions: false,&#10;      // What the user has entered&#10;      userInput: &#34;&#34;,&#10;&#10;&#10;      userSelection: &#34;&#34;&#10;    };&#10;  }&#10;&#10;&#10;  onChange = e =&gt; {&#10;    const { suggestions } = this.props;&#10;    const userInput = e.currentTarget.value;&#10;&#10;&#10;    // Filter our suggestions that don't contain the user's input&#10;    const filteredSuggestions = suggestions.filter(&#10;      suggestion =&gt;&#10;        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) &gt; -1&#10;    );&#10;&#10;&#10;    this.setState({&#10;      activeSuggestion: 0,&#10;      filteredSuggestions,&#10;      showSuggestions: true,&#10;      userInput: e.currentTarget.value&#10;    });&#10;  };&#10;&#10;&#10;  onClick = e =&gt; {&#10;      console.log(&#34;e.currentTarget&#34;)&#10;    this.setState({&#10;      activeSuggestion: 0,&#10;      filteredSuggestions: [],&#10;      showSuggestions: false,&#10;      userInput: e.currentTarget.innerText,&#10;      userSelection: e.currentTarget.innerText&#10;    });&#10;  };&#10;&#10;&#10;  onKeyDown = e =&gt; {&#10;    const { activeSuggestion, filteredSuggestions } = this.state;&#10;&#10;&#10;    // User pressed the enter key&#10;    if (e.keyCode === 13) {&#10;      this.setState({&#10;        activeSuggestion: 0,&#10;        showSuggestions: false,&#10;        userInput: filteredSuggestions[activeSuggestion],&#10;        userSelection: filteredSuggestions[activeSuggestion]&#10;      });&#10;    }&#10;    // User pressed the up arrow&#10;    else if (e.keyCode === 38) {&#10;      if (activeSuggestion === 0) {&#10;        return;&#10;      }&#10;&#10;&#10;      this.setState({ activeSuggestion: activeSuggestion - 1 });&#10;    }&#10;    // User pressed the down arrow&#10;    else if (e.keyCode === 40) {&#10;      if (activeSuggestion - 1 === filteredSuggestions.length) {&#10;        return;&#10;      }&#10;&#10;&#10;      this.setState({ activeSuggestion: activeSuggestion + 1 });&#10;    }&#10;  };&#10;&#10;&#10;  onBlur = e =&gt; {&#10;    if (this.state.userSelection === &#34;&#34;) {&#10;    //   this.setState({&#10;    //     activeSuggestion: 0,&#10;    //     filteredSuggestions: [],&#10;    //     showSuggestions: false,&#10;    //     userInput: '',&#10;&#10;&#10;    //   });&#10;    }&#10;  };&#10;&#10;&#10;  render() {&#10;    const {&#10;      onChange,&#10;      onClick,&#10;      onKeyDown,&#10;      onBlur,&#10;      state: {&#10;        activeSuggestion,&#10;        filteredSuggestions,&#10;        showSuggestions,&#10;        userInput&#10;      }&#10;    } = this;&#10;&#10;&#10;    let suggestionsListComponent;&#10;&#10;&#10;    if (showSuggestions &amp;&amp; userInput) {&#10;      if (filteredSuggestions.length) {&#10;        suggestionsListComponent = (&#10;          <ul>&#10;            {filteredSuggestions.map((suggestion, index) =&gt; {&#10;              let className;&#10;&#10;&#10;              // Flag the active suggestion with a class&#10;              if (index === activeSuggestion) {&#10;                className = &#34;suggestion-active&#34;;&#10;              }&#10;&#10;&#10;              return (</ul><ul>        &amp;lt;form&amp;gt;&#10;          &amp;lt;AutoCompleteInput suggestions={this.state.items} required={true} /&amp;gt;&#10;          &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;submit&amp;quot; /&amp;gt;&#10;        &amp;lt;/form&amp;gt;<br></ul><ul>);&#10;            })}&#10;          </ul>&#10;        );&#10;      } else {&#10;        suggestionsListComponent = (&#10;          <div>&#10;            <em>No suggestions, you're on your own!</em>&#10;          </div>&#10;        );&#10;      }&#10;    }&#10;&#10;&#10;    return (&#10;      &#10;        <font color=\"#000000\">      &amp;lt;Fragment&amp;gt;&#10;        &amp;lt;input&#10;          type=&amp;quot;text&amp;quot;&#10;          onChange={onChange}&#10;          onKeyDown={onKeyDown}&#10;          value={userInput}&#10;          onBlur={onBlur}&#10;          required={this.props.required}&#10;        /&amp;gt;&#10;        {suggestionsListComponent}&#10;      &amp;lt;/Fragment&amp;gt;</font>&#10;      &#10;    );&#10;  }&#10;}&#10;&#10;&#10;export default AutocompleteInput;&#10;&#10;&#10;</pre></code>",
+      "createdAt": "Tue Sep 06 2022",
+      "description": "The autocomplete attribute specifies whether a form or an input field should have autocomplete on or off. Autocomplete allows the browser to predict the value. When a user starts to type in a field, the browser should display options to fill in the field, based on earlier typed values.",
+      "id": "-NBEJzKIyzTH2poKdaFO",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-09-11%20at%209.19.08%20PM_1631375560083?alt=media&token=3ba4fd6a-563c-4deb-b7ec-f5d29da2be20",
+      "name": "Auto Complete in React JS class",
+      "pos": 20,
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN"
+      ],
+      "views": 26
+    },
+    "-NE5YwEpZHIZePqOFvhx": {
+      "content": "<div class=\"\"><h1 class=\"pw-post-title iy iz ja bm jb jc jd je jf jg jh ji jj jk jl jm jn jo jp jq jr js jt ju jv jw fw\">Observer Pattern in TypeScript</h1></div><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">The&#160;<span class=\"jz jb\">Observer</span>&#160;pattern is a software design pattern in which an object, called the&#160;<span class=\"jz jb\">Subject</span>&#160;(<span class=\"jz jb\">Observable</span>), manages a list of dependents, called&#160;<span class=\"jz jb\">Observers</span>, and notifies them automatically of any internal state changes by calling one of their methods.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">The Observer pattern follows the publisher/subscribe concept. A subscriber, subscribes to a publisher. The publisher then notifies the subscribers when necessary.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">The observer stores state that should be consistent with the subject. The observer only needs to store what is necessary for its own purposes.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">A typical place to use the observer pattern is between your application and presentation layers. Your application is the manager of the data and is the single source of truth, and when the data changes, it can update all the subscribers, that could be part of multiple presentation layers. For example, the score was changed in a televised cricket game, so all the web browser clients, mobile phone applications, leaderboard display on the ground and television graphics overlay, can all now have the updated information synchronized.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">The Observer pattern allows you to vary subjects and observers independently. You can reuse subjects without reusing their observers, and vice versa. It lets you add observers without modifying the subject or any of the other observers.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">The observer pattern is commonly described as a push model, where the subject pushes the update to all observers. But observers can pull for updates and also only if it decides it is necessary.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">Whether you decide to use a push or pull concept to move data, then there are pros and cons to each. You may decide to use a combination of both to manage reliability.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">E.g., When sending messages across a network, the receiving client, can be slow to receive the full message that was sent, or even timeout. This pushing from the sender&#8217;s side can increase the amount of network hooks or threads if there are many messages still waiting to be fully delivered. The subject is taking responsibility for the delivery.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">On the other hand, if the observer requests for an update from the subscriber, then the subject (observable) can return the information as part of the requests&#8217; response. The observer could also indicate as part of the request, to only return data applicable to X, that would then make the response message smaller to transfer at the expense of making the observable more coupled to the observer.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">Use a push mechanism from the subject when updates are absolutely required in as close to real time from the perspective of the observer, noting that you may need to manage the potential of extra unresolved resources queuing up at the sender.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">If updates on the observer end are allowed to suffer from some delay, then a pull mechanism is most reliable and easiest to manage since it is then the observers responsibly to synchronize its own state.</p><h2 class=\"sr ss ja bm st mn su mo mq mr sv ms mu ki sw mv mx km sx my na kq sy nb nd sz fw\">Terminology</h2><ul class=\"\"><li class=\"ta tb ja jz b ka tc ke td ki te km tf kq tg ku th ti tj tk fw\"><span class=\"jz jb\">Subject Interface</span>: (Observable Interface) The interface that the subject should implement.</li><li class=\"ta tb ja jz b ka tl ke tm ki tn km to kq tp ku th ti tj tk fw\"><span class=\"jz jb\">Concrete Subject</span>: (Observable) The object that is the subject.</li><li class=\"ta tb ja jz b ka tl ke tm ki tn km to kq tp ku th ti tj tk fw\"><span class=\"jz jb\">Observer Interface</span>: The interface that the observer should implement.</li><li class=\"ta tb ja jz b ka tl ke tm ki tn km to kq tp ku th ti tj tk fw\"><span class=\"jz jb\">Concrete Observer</span>: The object that is the observer. There can be a variable number of observers that can subscribe/unsubscribe during runtime.</li></ul><h2 class=\"sr ss ja bm st mn su mo mq mr sv ms mu ki sw mv mx km sx my na kq sy nb nd sz fw\">Observer UML Diagram</h2><figure class=\"tr ts tt tu gt tv gh gi paragraph-image\"><div role=\"button\" tabindex=\"0\" class=\"tw tx do ty ce tz\"><div class=\"gh gi tq\"><picture><source srcset=\"https://miro.medium.com/max/640/1*UzMOoqOaodcbgMCucIILDg.png 640w, https://miro.medium.com/max/720/1*UzMOoqOaodcbgMCucIILDg.png 720w, https://miro.medium.com/max/750/1*UzMOoqOaodcbgMCucIILDg.png 750w, https://miro.medium.com/max/786/1*UzMOoqOaodcbgMCucIILDg.png 786w, https://miro.medium.com/max/828/1*UzMOoqOaodcbgMCucIILDg.png 828w, https://miro.medium.com/max/1100/1*UzMOoqOaodcbgMCucIILDg.png 1100w, https://miro.medium.com/max/1400/1*UzMOoqOaodcbgMCucIILDg.png 1400w\" sizes=\"(min-resolution: 4dppx) and (max-width: 700px) 50vw, (-webkit-min-device-pixel-ratio: 4) and (max-width: 700px) 50vw, (min-resolution: 3dppx) and (max-width: 700px) 67vw, (-webkit-min-device-pixel-ratio: 3) and (max-width: 700px) 65vw, (min-resolution: 2.5dppx) and (max-width: 700px) 80vw, (-webkit-min-device-pixel-ratio: 2.5) and (max-width: 700px) 80vw, (min-resolution: 2dppx) and (max-width: 700px) 100vw, (-webkit-min-device-pixel-ratio: 2) and (max-width: 700px) 100vw, 700px\"></source><img alt=\"\" class=\"ce ni ua c\" width=\"700\" height=\"281\" role=\"presentation\" src=\"https://miro.medium.com/max/700/1*UzMOoqOaodcbgMCucIILDg.png\"></picture></div></div><figcaption class=\"ub bl gj gh gi uc ud bm b bn bo cn\">Observer Pattern UML Diagram</figcaption></figure><h2 class=\"sr ss ja bm st mn su mo mq mr sv ms mu ki sw mv mx km sx my na kq sy nb nd sz fw\">Source Code</h2><p class=\"pw-post-body-paragraph jx jy ja jz b ka tc kc kd ke td kg kh ki ue kk kl km uf ko kp kq ug ks kt ku it fw\">A Subject (Observable) is created.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">Two Observers are created. They could be across a network, but for demonstration purposes are within the same client.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">The Subject notifies the Observers.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">One of the Observers unsubscribes,</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\">The Subject notifies the remaining Observer again.</p><p class=\"pw-post-body-paragraph jx jy ja jz b ka kb kc kd ke kf kg kh ki kj kk kl km kn ko kp kq kr ks kt ku it fw\"><br></p><p><font face=\"Calibri\" color=\"#75b1ff\">./src/observer/observer-concept.ts</font></p><pre><code> Observer Design Pattern Concept&#10;// https://sbcode.net/typescript/observer/#source-code&#10;interface IObservable {&#10;    // The Subject Interface&#10;    subscribe(observer: IObserver): void&#10;    // The subscribe method&#10;    unsubscribe(observer: IObserver): void&#10;    // The unsubscribe method&#10;    notify(...args: unknown[]): void&#10;    // The notify method&#10;}&#10;class Subject implements IObservable {&#10;    // The Subject (a.k.a Observable)&#10;    #observers: Set&#10;    constructor() {&#10;        this.#observers = new Set()&#10;    }&#10;    subscribe(observer: IObserver) {&#10;        this.#observers.add(observer)&#10;    }&#10;    unsubscribe(observer: IObserver) {&#10;        this.#observers.delete(observer)&#10;    }&#10;    notify(...args: unknown[]) {&#10;        this.#observers.forEach((observer) =&gt; {&#10;            observer.notify(...args)&#10;        })&#10;    }&#10;}&#10;interface IObserver {&#10;    // A method for the Observer to implement&#10;    notify(...args: unknown[]): void&#10;    // Receive notifications&#34;&#10;}&#10;class Observer implements IObserver {&#10;    // The concrete observer&#10;    #id: number&#10;    constructor(observable: IObservable) {&#10;        this.#id = COUNTER++&#10;        observable.subscribe(this)&#10;    }&#10;    notify(...args: unknown[]) {&#10;        console.log(&#10;            `OBSERVER_${this.#id} received ${JSON.stringify(args)}`&#10;        )&#10;    }&#10;}&#10;// The Client&#10;let COUNTER = 1 // An ID to help distinguish between objects&#10;const SUBJECT = new Subject()&#10;const OBSERVER_1 = new Observer(SUBJECT)&#10;const OBSERVER_2 = new Observer(SUBJECT)&#10;SUBJECT.notify('First Notification', [1, 2, 3])&#10;// Unsubscribe OBSERVER_2&#10;SUBJECT.unsubscribe(OBSERVER_2)&#10;SUBJECT.notify('Second Notification', { A: 1, B: 2, C: 3 })</code></pre><pre><span>https://run.mocky.io/v3/86016330-8749-48d5-82f8-a9d08acddb50</span><span>&#34;</span><span>;</span><br></pre>",
+      "createdAt": "Tue Oct 11 2022",
+      "description": "The Observer pattern is a software design pattern in which an object, called the Subject (Observable), manages a list of dependents, called Observers, and notifies them automatically of any internal state changes by calling one of their methods.",
+      "id": "-NE5YwEpZHIZePqOFvhx",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/blogs%2Fmaxresdefault.jpg___13maxresdefault.jpg?alt=media&token=005fb679-6f42-4aa6-8e32-b53e76ebba05",
+      "name": "Observer Design Pattern",
+      "pos": 1,
+      "tags": [
+        "-NBOz4Hpqg_GGgHWQDEF",
+        "-NBOvqGfehfBnpKK-QwO"
+      ],
+      "views": 69
+    },
+    "-NEzAEybXkovMiwP7RWk": {
+      "content": "<h2 class=\"post__PostTitle-sc-1z06nmi-1 bwnPEq\">Data Structures in TypeScript - Linked List</h2><div class=\"style__Container-iv2i15-0 iJLpCt\"><br></div><article class=\"post__PostBody-sc-1z06nmi-2 ikDPqB\"><p>A linked list is a data structure that holds objects arranged in a linear order, this order is determined by a pointer in each node. Unlike an array, a linked list doesn't provide constant-time access to a particular index, you have to iterate through the list to find an element, on the other hand, is possible to add and remove items from the beginning of the list in a constant time. Linked lists can be used to implement other data structures, such as stacks, queues, and graphs.</p><p>There are some types of linked lists:</p><p><br></p><ul><li><strong>Singly linked list</strong>&#160;- Each node has only a pointer to the next node.</li><li><strong>Doubly linked list</strong>&#160;- Each node has pointers to both the previous and next node.</li><li><strong>Circular linked list</strong>&#160;- The last node points to the first element.</li></ul><h3><br></h3><p><img alt=\"linked list\" src=\"https://res.cloudinary.com/dje4crtui/image/upload/v1622906568/data%20structures/linked-list_jdtg7y.png\"></p><ul><li><strong>Head</strong>&#160;- the first node&#160;<strong>Tail</strong><span>&#160;- the last node</span></li><li><br></li></ul><h3>Basic operations</h3><p><strong>Insertion</strong>&#160;- It's possible to insert a new element anywhere in the list, you just have to take care of the pointers. If you are adding an element to the beginning the new node will pointer to the former head node. If you are appending to the tail, the former tail node will point to the new node. Now, if inserting between nodes, the previous node has to point to the new node which will point to the next node</p><p><strong>Deletion</strong>&#160;- Follow a similar logic of insertion, if you want to remove a node from the middle of the list, you just have to make the target's previous node point to the target's next node. In a doubly-linked list, you have to take care of the previous pointer too.</p><p><strong>Traverse</strong>&#160;- Each node has a point to next, so you start from the node head and follow the pointers until the last node, which will not point to any node (in a non-circular linked list)</p><pre><code class=\"language-typescript\"><span class=\"comment linenumber react-syntax-highlighter-line-number\">1</span><span>n = list.head&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">2</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">3</span><span></span><span>while</span><span> n != </span><span>null</span><span>&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">4</span>    n = n.next&#10;</code></pre><p>Here's an implementation of a singly linked list:</p><pre><code class=\"language-typescript\"><span class=\"comment linenumber react-syntax-highlighter-line-number\">1</span><span class=\"hljs-class\">class</span><span class=\"hljs-class\"> </span><span class=\"hljs-class\">Node</span><span class=\"hljs-class\">&lt;</span><span class=\"hljs-class\">T</span><span class=\"hljs-class\">&gt; </span><span>{&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">2</span><span>  </span><span class=\"hljs-attr\">data</span><span>: T;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">3</span><span>  next: Node&lt;T&gt; | </span><span>null</span><span> = </span><span>null</span><span>;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">4</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">5</span><span>  </span><span class=\"hljs-function\">constructor</span><span class=\"hljs-function\">(</span><span class=\"hljs-function hljs-params\">data: T</span><span class=\"hljs-function\">)</span><span> {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">6</span><span>    </span><span>this</span><span>.data = data;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">7</span>  }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">8</span>}&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">9</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">10</span><span></span><span class=\"hljs-class\">class</span><span class=\"hljs-class\"> </span><span class=\"hljs-class\">LinkedList</span><span class=\"hljs-class\">&lt;</span><span class=\"hljs-class\">T</span><span class=\"hljs-class\">&gt; </span><span>{&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">11</span><span>  </span><span class=\"hljs-attr\">head</span><span>: Node&lt;T&gt; | </span><span>null</span><span> = </span><span>null</span><span>;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">12</span><span>  comparator: </span><span class=\"hljs-function\">(</span><span class=\"hljs-function hljs-params\">a: T, b: T</span><span class=\"hljs-function\">) =&gt;</span><span> </span><span>boolean</span><span>;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">13</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">14</span><span>  </span><span class=\"hljs-function\">constructor</span><span class=\"hljs-function\">(</span><span class=\"hljs-function hljs-params\">comparator: (a: T, b: T) =&gt; </span><span class=\"hljs-function hljs-params\">boolean</span><span class=\"hljs-function\">)</span><span> {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">15</span><span>    </span><span>this</span><span>.comparator = comparator;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">16</span>  }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">17</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">18</span><span>  append(data: T): </span><span>void</span><span> {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">19</span><span>    </span><span>if</span><span> (!</span><span>this</span><span>.head) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">20</span><span>      </span><span>this</span><span>.head = </span><span>new</span><span> Node(data);&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">21</span><span>    } </span><span>else</span><span> {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">22</span><span>      </span><span>let</span><span> current = </span><span>this</span><span>.head;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">23</span><span>      </span><span>while</span><span> (current.next != </span><span>null</span><span>) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">24</span>        current = current.next;&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">25</span>      }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">26</span><span>      current.next = </span><span>new</span><span> Node(data);&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">27</span>    }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">28</span>  }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">29</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">30</span><span>   </span><span>delete</span><span>(data: T): </span><span>void</span><span> {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">31</span><span>    </span><span>if</span><span> (!</span><span>this</span><span>.head) </span><span>return</span><span>;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">32</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">33</span><span>    </span><span>// Check if the head node is the node to be removed</span><span>&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">34</span><span>    </span><span>if</span><span> (</span><span>this</span><span>.comparator(</span><span>this</span><span>.head.data, data)) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">35</span><span>      </span><span>this</span><span>.head = </span><span>this</span><span>.head.next;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">36</span><span>      </span><span>return</span><span>;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">37</span>    }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">38</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">39</span><span>    </span><span>let</span><span> current = </span><span>this</span><span>.head.next;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">40</span><span>    </span><span>let</span><span> previous = </span><span>this</span><span>.head;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">41</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">42</span><span>    </span><span>/**&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">43</span>     * Search for the node to be removed and keep track of its previous node&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">44</span>     *&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">45</span>     * If it were a double linked list, we could simply search the node&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">46</span>     * and it would have a pointer to the previous node&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">47</span><span>     **/</span><span>&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">48</span><span>    </span><span>while</span><span> (current) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">49</span><span>      </span><span>if</span><span> (</span><span>this</span><span>.comparator(current.data, data)) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">50</span><span>        current = </span><span>null</span><span>;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">51</span><span>      } </span><span>else</span><span> {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">52</span>        previous = current;&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">53</span>        current = current.next;&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">54</span>      }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">55</span>    }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">56</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">57</span><span>    </span><span>/**&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">58</span>     * set previous.next to the target.next, if the node target is not found,&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">59</span>     * the 'previous' will point to the last node,&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">60</span>     * since the last node hasn't next, nothing will happen&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">61</span><span>     **/</span><span>&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">62</span><span>    previous.next = previous.next ? previous.next.next : </span><span>null</span><span>;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">63</span>  }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">64</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">65</span><span>  search(data: T): Node&lt;T&gt; | </span><span>null</span><span> {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">66</span><span>    </span><span>let</span><span> current = </span><span>this</span><span>.head;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">67</span><span>    </span><span>while</span><span> (current) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">68</span><span>      </span><span>if</span><span> (</span><span>this</span><span>.comparator(current.data, data)) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">69</span><span>        </span><span>return</span><span> current;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">70</span>      }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">71</span>      current = current.next;&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">72</span>    }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">73</span><span>    </span><span>return</span><span> </span><span>null</span><span>;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">74</span>  }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">75</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">76</span><span>  </span><span class=\"hljs-function\">traverse</span><span class=\"hljs-function\">(</span><span class=\"hljs-function\">)</span><span> {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">77</span><span>    </span><span>let</span><span> current = </span><span>this</span><span>.head;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">78</span><span>    </span><span>while</span><span> (current != </span><span>null</span><span>) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">79</span><span>      </span><span>console</span><span>.log(current.data);&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">80</span>      current = current.next;&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">81</span>    }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">82</span>  }&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">83</span>}&#10;</code></pre><h3><br></h3><h3><br></h3><h3>Runner technique</h3><p>This technique consists in iterate through a linked list with two pointers, a slow and a fast which will be ahead of the slow pointer by&#160;<em>n</em>&#160;nodes.</p><p><img alt=\"runner technique\" src=\"https://res.cloudinary.com/dje4crtui/image/upload/v1622906568/data%20structures/runner_kkvdx4.png\"></p><p>This is useful to solve some problems with a linked list, like detecting a cycle or finding the middle node of a linked list when you don't know its size.</p><p><br></p><p><br></p><pre><code class=\"language-typescript\"><span class=\"comment linenumber react-syntax-highlighter-line-number\">1</span><span>/** Finding the middle node of a linked list **/</span><span>&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">2</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">3</span><span></span><span>let</span><span> slow: LinkedListNode&lt;</span><span>number</span><span>&gt; | </span><span>null</span><span> | </span><span>undefined</span><span> = linkedList.head;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">4</span><span></span><span>let</span><span> fast: LinkedListNode&lt;</span><span>number</span><span>&gt; | </span><span>null</span><span> | </span><span>undefined</span><span> = linkedList.head?.next;&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">5</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">6</span><span></span><span>/**&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">7</span> * The &#34;fast&#34; will move twice as fast as the &#34;slow&#34; one,&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">8</span> * so at the moment the &#34;fast&#34; reaches the end of the list,&#10;</span><span><span class=\"comment linenumber react-syntax-highlighter-line-number\">9</span> * the &#34;slow&#34; will be in the middle of the list&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">10</span><span> **/</span><span>&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">11</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">12</span><span></span><span>while</span><span> (fast) {&#10;</span><span class=\"comment linenumber react-syntax-highlighter-line-number\">13</span>  slow = slow?.next;&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">14</span>  fast = fast?.next?.next;&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">15</span>}&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">16</span>&#10;<span class=\"comment linenumber react-syntax-highlighter-line-number\">17</span><span></span><span>console</span><span>.log(slow);</span></code></pre></article>",
+      "createdAt": "Sat Oct 22 2022",
+      "description": "A linked list is a data structure that holds objects arranged in a linear order, this order is determined by a pointer in each node. Unlike an array, a linked list doesn't provide constant-time access to a particular index, you have to iterate through the list to find an element, on the other hand, is possible to add and remove items from the beginning of the list in a constant time. Linked lists can be used to implement other data structures, such as stacks, queues, and graphs.",
+      "id": "-NEzAEybXkovMiwP7RWk",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/blogs%2Fczadmna05awshy4bx0lk.webp___670czadmna05awshy4bx0lk.webp?alt=media&token=fafa6725-e79e-486d-85b6-a03beb7fe7db",
+      "name": "Linked List",
+      "pos": 2,
+      "tags": [
+        "-NBOyEn07r9V8HY8Z8RR",
+        "-NBOvqGfehfBnpKK-QwO"
+      ],
+      "views": 51
+    },
+    "-NEzj0T6lj2eL0Cv57Dk": {
+      "content": "<div class=\"w-full px-5 pt-4\"><div class=\"w-full\"><div class=\"flex space-x-4\"><div class=\"flex-1\"><div class=\"flex items-center\"><div class=\"h-full\"><span class=\"mr-2 text-lg font-medium text-label-1 dark:text-dark-label-1\">1.&#160;Two Sum</span></div></div></div></div></div></div><div class=\"px-5 pt-4\"><div class=\"_1l1MA\"><p>Given an array of integers&#160;<code>nums</code>&#160;and an integer&#160;<code>target</code>, return&#160;<em>indices of the two numbers such that they add up to&#160;<code>target</code></em>.</p><p>You may assume that each input would have&#160;<span><em>exactly</em>&#160;one solution</span>, and you may not use the&#160;<em>same</em>&#160;element twice.</p><p>You can return the answer in any order.</p><p>&#160;</p><p><span class=\"example\">Example 1:</span></p><pre><span>Input:</span> nums = [2,7,11,15], target = 9&#10;<span>Output:</span> [0,1]&#10;<span>Explanation:</span> Because nums[0] + nums[1] == 9, we return [0, 1].&#10;</pre><p><span class=\"example\">Example 2:</span></p><pre><span>Input:</span> nums = [3,2,4], target = 6&#10;<span>Output:</span> [1,2]&#10;</pre><p><span class=\"example\">Example 3:</span></p><pre><span>Input:</span> nums = [3,3], target = 6&#10;<span>Output:</span> [0,1]&#10;</pre><p>&#160;</p><p><span>Constraints:</span></p><ul><li><code>2 &lt;= nums.length &lt;= 10<span>4</span></code></li><li><code>-10<span>9</span> &lt;= nums[i] &lt;= 10<span>9</span></code></li><li><code>-10<span>9</span> &lt;= target &lt;= 10<span>9</span></code></li><li><span>Only one valid answer exists.</span></li></ul><p>&#160;</p><span>Follow-up:&#160;</span>Can you come up with an algorithm that is less than&#160;<code>O(n<span>2</span>)&#160;</code>time complexity?</div><div class=\"_1l1MA\"><br></div><div class=\"_1l1MA\"><br></div><div class=\"_1l1MA\"><u><br></u></div><h5><u>Solution</u></h5><div><br></div>&#10;&#10;&#10;<pre>    <code>&#10;        function twoSum(nums: number[], target: number): number[] {&#10;            const hash = {};&#10;            for(let x = 0; x &lt; nums.length; x++) {&#10;                if(hash[nums[x]] !== undefined) {&#10;                    return [hash[nums[x]], x];&#10;                }&#10;                hash[target - nums[x]] = x;&#10;            }&#10;          &#10;            return []&#10;          };&#10;    </code>&#10;</pre></div>",
+      "createdAt": "Sat Oct 22 2022",
+      "description": "Solution for leetcode easy problem \"Two Sum\"",
+      "id": "-NEzj0T6lj2eL0Cv57Dk",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/blogs%2FScreenshot%202022-10-22%20at%206.13.43%20PM.png___711Screenshot%202022-10-22%20at%206.13.43%20PM.png?alt=media&token=425d9fef-2e58-4631-bbb7-46d045f71ccd",
+      "name": "Leetcode Two Sum Problem",
+      "pos": 3,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NEzkEjDlQ1xiXeB2Hm1"
+      ],
+      "views": 34
+    },
+   
+    
+    "-NFcQd8idZalIlEU4_MA": {
+      "content": "<div class=\"w-full px-5 pt-4\"><div class=\"w-full\"><div class=\"flex space-x-4\"><div class=\"flex-1\"><div class=\"flex items-center\"><div class=\"h-full\"><span class=\"mr-2 text-lg font-medium text-label-1 dark:text-dark-label-1\">14.Longest Common Prefix</span></div></div></div></div></div></div><div class=\"px-5 pt-4\"><div class=\"_1l1MA\"><p>Write a function to find the longest common prefix string amongst an array of strings.</p><p>If there is no common prefix, return an empty string&#160;<code>&#34;&#34;</code>.</p><p>&#160;</p><p><span class=\"example\">Example 1:</span></p><pre><span>Input:</span> strs = [&#34;flower&#34;,&#34;flow&#34;,&#34;flight&#34;]&#10;<span>Output:</span> &#34;fl&#34;&#10;</pre><p><span class=\"example\">Example 2:</span></p><pre><span>Input:</span> strs = [&#34;dog&#34;,&#34;racecar&#34;,&#34;car&#34;]&#10;<span>Output:</span> &#34;&#34;&#10;<span>Explanation:</span> There is no common prefix among the input strings.&#10;</pre><p>&#160;</p><p><span>Constraints:</span></p><ul><li><code>1 &lt;= strs.length &lt;= 200</code></li><li><code>0 &lt;= strs[i].length &lt;= 200</code></li><li><code>strs[i]</code>&#160;consists of only lowercase English letters.</li></ul><div><br></div><div><u><font face=\"Comic Sans MS\">Solution:</font></u></div><div><br></div></div></div><pre><code>&#10;function longestCommonPrefix(strs: string[]): string {&#10;    let result: string = '';&#10;    const targettedString: string = strs[0];&#10;&#10;    for(let x = 0; x &lt; targettedString.length; x++) {&#10;        const currentChar = targettedString[x];&#10;        for(let y = 0; y &lt; strs.length; y++) {&#10;            if(strs[y][x] !== currentChar) return result;&#10;        }&#10;        result += currentChar&#10;    }&#10;&#10;    return result;&#10;};&#10;&#10;</code></pre>",
+      "createdAt": "Sun Oct 30 2022",
+      "description": "Solution of Leetcode Longest Common Prefix Problem",
+      "id": "-NFcQd8idZalIlEU4_MA",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/blogs%2FScreenshot%202022-10-30%20at%203.54.17%20PM.png___488Screenshot%202022-10-30%20at%203.54.17%20PM.png?alt=media&token=04b304e5-c9fb-4325-8a71-6f353cf3d485",
+      "name": "Leetcode Longest Common Prefix Problem",
+      "pos": 5,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NEzkEjDlQ1xiXeB2Hm1"
+      ],
+      "views": 23
+    },
+   
+    "-NGDNA7jmONtXX3VGVtB": {
+      "content": "&#10;&#10;<p>A Kaprekar number is a number whose square when divided into two parts and such that sum of parts is equal to the original number and none of the parts has value 0.</p><p><br></p>&#10;<pre><code>const kaprekarNumber = (limit: number) =&gt; {&#10;  const arr = [];&#10;  for (let i = 0; i &lt;= limit; i++) {&#10;    if (i === kaprekar(i * i)) arr.push(i);&#10;  }&#10;&#10;  return arr;&#10;};&#10;&#10;&#10;const kaprekar = (num: number) =&gt; {&#10;  const split = num.toString().split('');&#10;  const median = Math.floor(split.length / 2);&#10;  const slice = split.slice(0, median);&#10;  const slice2 = split.slice(median);&#10;  return Number(slice.join('')) + Number(slice2.join(''));&#10;};&#10;&#10;&#10;console.log(kaprekarNumber(100000));&#10;&#10;&#10;</code></pre>&#10;&#10;",
+      "createdAt": "Mon Nov 07 2022",
+      "description": "A Kaprekar number is a number whose square when divided into two parts and such that sum of parts is equal to the original number and none of the parts has value 0.",
+      "id": "-NGDNA7jmONtXX3VGVtB",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/blogs%2FScreenshot%202022-11-07%20at%2012.45.21%20AM.png___266Screenshot%202022-11-07%20at%2012.45.21%20AM.png?alt=media&token=339b6f39-9702-42b7-9f6e-d11fb486dcd6",
+      "name": "Kaprekar Number",
+      "pos": 7,
+      "tags": [
+        "-NEzkEjDlQ1xiXeB2Hm1",
+        "-NBOvqGfehfBnpKK-QwO"
+      ],
+      "views": 15
+    },
+   
+    "-NGmolC_GZW0KQwC28NN": {
+      "content": "<pre><code>let nums = [[1, 2], [[3, 4]], [[[5], [6]]]];&#10;&#10;&#10;/**&#10; * Using reduce method&#10; */&#10;const flatten = (arr: any[]) =&gt;&#10;  arr.reduce((acc, val) =&gt; {&#10;    Array.isArray(val) ? acc.push(...flatten(val)) : acc.push(val);&#10;    return acc;&#10;  }, []);&#10;&#10;&#10;/**&#10; * Using recursive and thunk function&#10; */&#10;const flatten2 = () =&gt; {&#10;  const list = [];&#10;  return function flat(arr) {&#10;    for (let i = 0; i &lt; arr.length; i++) {&#10;      if (typeof arr[i] === 'number') {&#10;        list.push(arr[i]);&#10;      } else if (Array.isArray(arr[i])) {&#10;        flat(arr[i]);&#10;      }&#10;&#10;      if (i === arr.length - 1) {&#10;        return list;&#10;      }&#10;    }&#10;  };&#10;};&#10;</code></pre>",
+      "createdAt": "Mon Nov 14 2022",
+      "description": "Flatten array of Arrays without using flat prototype method",
+      "id": "-NGmolC_GZW0KQwC28NN",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/blogs%2FScreenshot%202022-11-14%20at%202.35.47%20AM.png___383Screenshot%202022-11-14%20at%202.35.47%20AM.png?alt=media&token=baa5ccaa-b1b0-4633-9318-fecbf30dfa91",
+      "name": "Flatten array of Array",
+      "pos": 8,
+      "tags": [
+        "-NEzkEjDlQ1xiXeB2Hm1",
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "views": 12
+    }
+  },
+  "contact": {
+    "-NScsVHOtB-M-JkWZgCT": {
+      "createdAt": "2023-04-10T01:57:36.931Z",
+      "email": "shailshikha4997@gmail.com",
+      "message": "Please Notify me for Angular & JavaScript Sessions.",
+      "name": "Shail Shikha Bhardwaj",
+      "seen": false
+    },
+    "-N_E5B4TztExfuYco_1s": {
+      "createdAt": "2023-07-13T11:52:49.077Z",
+      "email": "sakirhussain0748@gmail.com",
+      "message": "Hello ",
+      "name": "sakir Hussain",
+      "seen": false
+    }
+  },
+  "notifications": {
+    "-NaW6xUGw-KdhdNiIIw2": {
+      "createdAt": "2023-07-29T10:09:25.807Z",
+      "entity": "projects",
+      "entityId": "-NK_aFqzYvO6ldQAUGhg",
+      "entityName": "sx-paginate",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/projects%2Ffeatured.jpeg___337featured.jpeg?alt=media&token=794de658-11f9-42bc-8866-81e173286e62",
+      "seen": false,
+      "totalViews": 30,
+      "type": "view"
+    },
+    "-NaW75UOy_spT71nB_7l": {
+      "createdAt": "2023-07-29T10:10:02.681Z",
+      "entity": "projects",
+      "entityId": "-NB6ndJ-hyf_ihDS49wk",
+      "entityName": "Eduglobetech",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%201.52.49%20AM_1623875102438?alt=media&token=59412d7d-7e61-4fa0-b20c-bcf92f4b4e2c",
+      "seen": false,
+      "totalViews": 159,
+      "type": "view"
+    },
+    "-NaW76TxM4SmO7-0-iVW": {
+      "createdAt": "2023-07-29T10:10:06.750Z",
+      "entity": "projects",
+      "entityId": "-NB6ndKO_d1FDflFbkXE",
+      "entityName": "My old website",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-29%20at%203.27.38%20PM_1624960739630?alt=media&token=b7e505b4-8410-4685-8b74-d5ca1e04d583",
+      "seen": false,
+      "totalViews": 233,
+      "type": "view"
+    },
+    "-NaW76ybr4T01aO1hHRO": {
+      "createdAt": "2023-07-29T10:10:08.775Z",
+      "entity": "projects",
+      "entityId": "-NB6ndKWOJQ4h6nNT74C",
+      "entityName": "React JS Website clone using booststrap",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-07-07%20at%209.38.21%20PM_1625674199471?alt=media&token=cd77b945-60d8-45fc-b287-177e738acda0",
+      "seen": false,
+      "totalViews": 70,
+      "type": "view"
+    },
+    "-NaW77_lxB7khl092FmF": {
+      "createdAt": "2023-07-29T10:10:11.281Z",
+      "entity": "projects",
+      "entityId": "-NB6ndJ7PJamG_qVvB4h",
+      "entityName": "Digital Marketo",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%202.04.44%20AM_1623875785207?alt=media&token=7999dd6b-fb35-4754-8b79-dc8ee05ff23f",
+      "seen": false,
+      "totalViews": 109,
+      "type": "view"
+    },
+    "-NaW78MXDx_wjaJwhexB": {
+      "createdAt": "2023-07-29T10:10:14.466Z",
+      "entity": "projects",
+      "entityId": "-NB6ndIxFuK_tZHSxMVL",
+      "entityName": "MG Enterprises",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%201.39.52%20AM_1623874309423?alt=media&token=9ab33d9d-4336-44d4-a35d-d33769d48a7e",
+      "seen": false,
+      "totalViews": 54,
+      "type": "view"
+    },
+    "-NaW79PWx7JonheumNGs": {
+      "createdAt": "2023-07-29T10:10:18.754Z",
+      "entity": "projects",
+      "entityId": "-NB6ndJ7PJamG_qVvB4h",
+      "entityName": "Digital Marketo",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%202.04.44%20AM_1623875785207?alt=media&token=7999dd6b-fb35-4754-8b79-dc8ee05ff23f",
+      "seen": false,
+      "totalViews": 110,
+      "type": "view"
+    },
+    "-NaW7A4gHApqWORktdNT": {
+      "createdAt": "2023-07-29T10:10:21.516Z",
+      "entity": "projects",
+      "entityId": "-NB6ndKWOJQ4h6nNT74C",
+      "entityName": "React JS Website clone using booststrap",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-07-07%20at%209.38.21%20PM_1625674199471?alt=media&token=cd77b945-60d8-45fc-b287-177e738acda0",
+      "seen": false,
+      "totalViews": 71,
+      "type": "view"
+    },
+    "-NaW9sWGCtoEs3dJjWZL": {
+      "createdAt": "2023-07-29T10:22:11.889Z",
+      "entity": "blogs",
+      "entityId": "-NEzAEybXkovMiwP7RWk",
+      "entityName": "Linked List",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/blogs%2Fczadmna05awshy4bx0lk.webp___670czadmna05awshy4bx0lk.webp?alt=media&token=fafa6725-e79e-486d-85b6-a03beb7fe7db",
+      "seen": false,
+      "totalViews": 51,
+      "type": "view"
+    }
+  },
+  "profile": {
+    "aboutMe": "Creative Web/Mobile Developer offering 3+ years of experience providing high- impact web solutions for diverse industry organizations. Skilled in designing, developing, and testing multiple web-based applications incorporating a range of technologies. Aspiring to combine broad background with strong technical skills to excel as a Fullstack web engineer.",
+    "acheivements": [
+      {
+        "description": "Won web development competition in a college fest held in ITS, Ghaziabad.",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/profile%2Faward_dzxydf.jpg2022-10-08T18%3A47%3A26.435Z?alt=media&token=87a4ebc9-e780-45b3-ae11-e2db4cd88729",
+        "title": "Web Development Competition"
+      },
+      {
+        "description": "Awarded as employee of the month in Praxiv IT Solution",
+        "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/profile%2Feom_llk0jl.jpg2022-10-08T18%3A48%3A06.125Z?alt=media&token=9a33599d-a49d-4c6a-b792-23a056cd8065",
+        "title": "Employee of the month"
+      }
+    ],
+    "companies": [
+      {
+        "currentlyWorking": false,
+        "description": "Manage website development projects from initial design through completion, optimizing all cross-browser and multi-platform compatibility.\nWork closely with programmers and clients to meet project requirements, goals, and desired functionality.\nDeveloped Angular web application from scratch to operate the admin functionality of iOS and Android applications (whats42nite.com) Integrated charts, graphs, and data tables to present the reports on a weekly, monthly, and yearly basis.\nDeveloped 42nite web browser purchase Angular app which increase the sales of event tickets to 80%, Integrated stripe payment gateway to generate orders and jsPDF to generate ticket copy as a PDF file (tech-stack used - Angular, RxJS, PHP Yii, typescript)",
+        "from": "2020-01-20",
+        "name": "Praxiv IT Solution",
+        "to": "2021-08-25"
+      },
+      {
+        "currentlyWorking": false,
+        "description": "My responsibility is to write highly abstracted and reusable web components which must be readable and meaningful for other engineers. Developed and design a web application based on React with typescript, and Redux for a centralized state. Focused on Object Oriented Designs and Principles and developed a framework that works as an interceptor between APIs and react app mainly used to serialize and deserialize complex data structures before the react application received the response or vice-versa",
+        "from": "2021-08-25",
+        "name": "Chetu India Inc.",
+        "to": "2023-02-28"
+      },
+      {
+        "currentlyWorking": true,
+        "description": "Manage website development and maintenance, optimizing all cross-browser and multi-platform compatibility. Work closely with programmers to meet project requirements, goals, and desired functionality. ",
+        "from": "2023-02-28",
+        "name": "Hindustan Times",
+        "to": ""
+      }
+    ],
+    "coverImageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/profile%2FScreenshot%202023-08-10%20at%206.03.44%20PM.png?alt=media&token=8a8cafe4-da61-4712-8d90-67382bb60768",
+    "designation": "SDE-II",
+    "email": "suboork100@gmail.com",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/profile%2FScreenshot%202023-04-07%20at%2012.54.15%20AM.png___203Screenshot%202023-04-07%20at%2012.54.15%20AM.png?alt=media&token=c5fbce76-1cdc-45f9-8fba-edd1089824d9",
+    "name": "Suboor Khan",
+    "social": {
+      "githubUrl": "https://github.com/suboor123",
+      "instagramUrl": "https://www.instagram.com/suboork_100/",
+      "linkedInUrl": "https://www.linkedin.com/in/suboor-khan-314136158/"
+    },
+    "status": "Learning fundamentals of golang👨‍💻"
+  },
+  "projects": {
+    "-NB6ndI1jWxj9Rw75Pn4": {
+      "content": "<p>BN STAFFING SERVICES is a brand to trust upon. We provide the best services in IT as well as NON-IT fields and&#10;    deliver best results to its business partners to help them experience Success. We are continuously evolving how we&#10;    work and how we look at marketplace challenges so we can continue to deliver measurable, sustainable results for our&#10;    clients. For us, good isn't good enough. We aim to be the best at all that we do&#8212;to help clients realize their&#10;    ambitions, to make a positive difference in society, and to maximize the success of our people. This drive fuels the&#10;    commitment and humanity that run deep through our every action. You can select us to Contact the best IT and Non-IT&#10;    professionals in the industry through a best and practical way! </p> <br>&#10;&#10;&#10;<div class=\"row my-5\">&#10;    <div class=\"col-md-6\">&#10;        <img src=\"https://www.olxpeople.com/blog/wp-content/uploads/2020/02/Blog-articles-staffing-and-recruitment_1-1-1.jpg\" alt=\"\" class=\"img-fluid\">&#10;    </div>&#10;    <div class=\"col-md-6\">&#10;        <p>We are a leading specialist recruitment firm serving the companies in different niche for a decade. We have a skilled&#10;            team of experts who select qualified and talented candidates from the huge number of applications available making a&#10;            way for the businesses to grow and flourish. We know that having the right employee can make a huge difference in&#10;            the business and the right job can create the life of an individual, hence we ensure to connect the candidates with&#10;            the best employees.</p>&#10;    </div>&#10;</div>&#10;&#10;&#10;<br>&#10;&#10;&#10;<p>We recruit for different job roles in different industries like banking and financial services, technology, pharma,&#10;    health care, telecom industry, automotive, media and entertainment, manufacturing, FMCG, real estate and education.&#10;&#10;&#10;    Our passion and enthusiasm is what makes us offer the best services to our clients. Our specialists first understand&#10;    the requirements of the clients and then move ahead to find the right and deserving candidates.</p>&#10;&#10;&#10;<blockquote>&#10;    <h3>WHY US?</h3>&#10;    Finding skilled employees for the job is one of the biggest challenges faced by many companies. If you are facing any such trouble then there is no need to worry as we are there to help you in getting the best employees for your specific job roles. We are a leading recruiting firm known to find the right talent for Multi National Companies and budding organizations. <br>&#10;    Our company bridges the gap between the talented employees and companies and lays the foundation for a profitable business. We aim at understanding the needs of clients first so that we can provide the best help.&#10;</blockquote>&#10;&#10;&#10;&#10;&#10;&#10;&#10;<section class=\"adv-inner py-lg-4 py-md-3 py-sm-3 py-3\">&#10;    <div class=\"container py-lg-5 py-md-4 py-sm-4 py-3\">&#10;        <div class=\"row\">&#10;            <div class=\"col-lg-6 col-md-6 \">&#10;                <div class=\"adv-w3l-text\">&#10;                    <h4 class=\"mb-lg-4 mb-3\">How we are different?&#10;                    </h4>&#10;                    <p class=\"text-left  mb-3\">We aim at making a great impact by serving the best. Our team is&#10;                        passionate about the work and has a minimum response time. We are open to suggestions and&#10;                        swiftly adapt to the needs of clients which is one of the major reasons for our huge number of&#10;                        satisfied clients. <br>&#10;                        Our team is the most important asset and we appreciate their efforts through rewards. We do not&#10;                        compromise our core values and give equal importance to both small and large organizations.&#10;                        Whatever your staffing needs are, you can freely contact our specialist recruiters anytime and&#10;                        get your needs fulfilled.</p>&#10;                    <div class=\"outs-blog-text\">&#10;&#10;&#10;                    </div>&#10;                </div>&#10;            </div>&#10;            <div class=\"col-lg-6 col-md-6\">&#10;                <div class=\"adv-w3l-text\">&#10;                    <h4 class=\"mb-lg-4 mb-3\">Mission and vision&#10;                    </h4>&#10;                    <p class=\"text-left mb-3\">&#10;                        Our mission is to fulfil the staffing needs of our clients with integrity. We aim at making&#10;                        customers happy and satisfied with our services and their positive feedback is what motivates us&#10;                        to offer the best. <br>&#10;                        Our vision is to transform the perception of recruitment and make the process easy for&#10;                        organizations.&#10;                    </p>&#10;                    <div class=\"outs-blog-text\">&#10;&#10;&#10;                    </div>&#10;                </div>&#10;            </div>&#10;        </div>&#10;    </div>&#10;</section>&#10;&#10;",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.",
+      "id": "-NB6ndI1jWxj9Rw75Pn4",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%2012.42.14%20AM_1623871027753?alt=media&token=6882b38a-0cd9-42f2-8700-d8a1a93876af",
+      "name": "BN Staffing Services",
+      "pos": 24,
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOw88MxGKrjfgiVosw",
+        "-NBOwhZmCwybh6YlQVSy"
+      ],
+      "url": "http://bnstaffingservices.com/",
+      "views": 12
+    },
+    "-NB6ndIjuXu_LGyuVnD1": {
+      "content": "<p>&#10;    The company specializes in the manufacturing of the premium genuine leather shoe. The company masters in the&#10;    technicalities related to the shoes and have maintained its quality. We also manufacture Cemented Shoes, San&#10;    Crispinos, Double Stitch Shoes, Hand Sewed Shoes.&#10;</p>&#10;&#10;&#10;&#10;&#10;<div class=\"hero__text-wrap\">&#10;    <div class=\"page-width\">&#10;        <div class=\"hero__text-content vertical-bottom horizontal-left\">&#10;&#10;&#10;&#10;            <h2 class=\"h1 hero__title\">&#10;                <div class=\"animation-cropper\">&#10;                    <div class=\"animation-contents display-4 text-white p-2\">&#10;                        Designs that you will love&#10;                    </div>&#10;                </div>&#10;            </h2>&#10;&#10;&#10;&#10;&#10;            <div class=\"hero__subtitle\">&#10;                <div class=\"animation-cropper\">&#10;                    <div class=\"animation-contents\">&#10;                        Run an extra mile for every walk of life keep your heels high the finest designs and fit sprint&#10;                        all you can walk ahead.&#10;&#10;&#10;                    </div>&#10;                </div>&#10;            </div>&#10;&#10;&#10;&#10;&#10;&#10;&#10;        </div>&#10;    </div>&#10;</div>&#10;&#10;&#10;<section>&#10;    <div class=\"row my-3\">&#10;        <div class=\"col-md-12 bg-danger text-dark\">&#10;            <div class=\"card bg-light\">&#10;                <div class=\"card-body\">&#10;                    <h5 class=\"card-title text-dark\">Shoes from which you shine through.</h5>&#10;                    <p class=\"card-text\">&#10;                        Days cant start without perfect shoes.The journey begins with the perfect pair. Shoes which&#10;                        added value of the first impression. Our reputation shines as brightly as our shoes <b>Live life&#10;                            in every move.</b>&#10;                    </p>&#10;                    <a href=\"http://boshorini.com/\" class=\"btn btn-info\">Checkout our latest products</a>&#10;                </div>&#10;            </div>&#10;        </div>&#10;        <div class=\"col-md-6\"></div>&#10;    </div>&#10;</section>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.",
+      "id": "-NB6ndIjuXu_LGyuVnD1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%201.05.51%20AM_1623872160929?alt=media&token=8e6b7331-df8f-4485-8790-ad614af63280",
+      "name": "Boshorini",
+      "pos": 26,
+      "tags": [
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOwYirgL3TKPAY7BNj",
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOzQqHDFVlyBBTk6Pa",
+        "-NBP1hkvYXioRxuHc_SJ"
+      ],
+      "url": "http://boshorini.com/",
+      "views": 18
+    },
+    "-NB6ndIrPZCCPio5c0T1": {
+      "content": "<p>&#10;    <b> Welcome to the world finest and biggest selection of handmade professional whistles.</b>&#10;</p>&#10;&#10;&#10;<p>Company shaped by moments of inspiration persevernace and courage.Established in the year (1937) mid 20th century&#10;    started as the production unit of whistle and other products.Indian whistle corporation has the unique manufacturing&#10;    ability worldwide to die strike your logo into the top of solid brass,iron and plastic whistles.Since,1937,we have&#10;    been commited to made india to delivering the ultimate in personal safety tools.We are proud to manufacture.</p>&#10;&#10;&#10;<div class=\"text-center\">&#10;    <img src=\"http://jaycowhistle.com/assets/w1.jpg\" alt=\"\" class=\"img-fluid mx-auto text-center w-50 my-3\">&#10;</div>&#10;<blockquote>&#10;    The indian whistle used by millions of indians across walls of life.We belive in full customer satisfaction by&#10;    providing the best quality products.The company is family run over 100 years and three generations.Jayco is&#10;    currently owned and manage by 'Azhar Sami'.At the beginning of the period the company faced competition from whistle&#10;    made of tin,plastic and cast bases material made in germany,japan,USA and other countries.&#10;</blockquote>&#10;&#10;&#10;<a href=\"#\" class=\"btn btn-lg btn-success w-100\">&#10;    Call Us!&#10;</a>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.",
+      "id": "-NB6ndIrPZCCPio5c0T1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%201.19.20%20AM_1623873018465?alt=media&token=a6fad6d7-b798-4521-bece-79715d7cfc03",
+      "name": "Jayco Whistle",
+      "pos": 25,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOwYirgL3TKPAY7BNj"
+      ],
+      "url": "http://jaycowhistle.com/",
+      "views": 25
+    },
+    "-NB6ndIubFOfNt9xJYql": {
+      "content": "<p>&#10;    Actinat Bio Pharma (P) Ltd. is a start-up company with a vision to create ethical and evidenced based Ayurvedic solutions through integrating science with traditional Ayurveda knowledge for human ailments.  &#10;&#10;&#10;</p>&#10;<div class=\"row my-3 \">&#10;    <div class=\"col-md-6 text-center\">&#10;        <img src=\"http://actinat.in/pic/side3.png\" alt=\"\" class=\"img-fluid w-25\">&#10;    </div>&#10;    <div class=\"col-md-6 \">&#10;        <p class=\"text-success\">The company was founded and run by a scientific minded Ayurveda doctors with a focused approach to serve mankind and provide high quality Ayurvedic medicines.  </p>&#10;&#10;&#10;            <p class=\"text-white\">&#10;                Actinat Bio Pharma (P) Ltd. was incepted in the year 2015 and after a strong in-house research spanning over four years, launched its first set of products in the year 2019. &#10;            </p>&#10;    </div>&#10;&#10;&#10;    <p>&#10;        Actinat Bio Pharma (P) Ltd. was incepted in the year 2015 and after a strong in-house research spanning over four years, launched its first set of products in the year 2019. &#10;        <br><br>&#10;        The founders of the company are themselves Ayurveda Doctors with a rich experience in the field of Ayurvedic medicines spread over more than 20 years, collectively in areas of Ayurvedic medicine&#8217;s clinical practice, manufacturing, regulatory and research and development and thus the products of company are well thought of from all aspects. All products of the Actinat Bio Pharma (P) Ltd. are developed by the research wing that follows a very scientific approach of product development.  &#10;    </p>&#10;</div>&#10;&#10;&#10;",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.",
+      "id": "-NB6ndIubFOfNt9xJYql",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%201.28.14%20AM_1623873609902?alt=media&token=8818669b-3970-4fb9-b2aa-9e5792ea5027",
+      "name": "Actinat",
+      "pos": 28,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOwYirgL3TKPAY7BNj"
+      ],
+      "url": "http://actinat.in/",
+      "views": 25
+    },
+    "-NB6ndIxFuK_tZHSxMVL": {
+      "content": "<p>&#10;    MG Enterprises est in 2014 are one of the leading manufacturers &amp; trader of cleaning chemicals, laundary chemicals, industrial chemicals, housekeeping materials, dyes chemicals &amp; Imported items.&#10;</p>&#10;<hr>&#10;<br>&#10;<small>WHOLESALE TRADER</small>&#10;<h3>&#10;    HIGHLY EXPERIENCED PROFESSIONALS&#10;</h3>&#10;<p>&#10;    We are backed with a team of highly experienced professionals which has enabled us to offer these supreme quality products as per the specific requirements of our precious clients. Our professionals work round the clock for the excellent growth of our organization. We have hired adroit professionals on the basis of experience and knowledge of their domains. In order to make sure systematic business operations, we have divided our professionals into various departments such as quality, procurement, warehouse, packaging, delivery, sales &amp; marketing etc. Being a quality centric organization, our quality controllers thoroughly check these tapes on various quality parameters. Owing to our transparent dealings and client &amp; quality centric approach, we have placed our organization at the pinnacle of success.</p><div class=\"col-lg-12 mt-5\"><div class=\"row text-dark\"><div class=\"col-lg-6 text-center text-teal\">&#10;      </div>&#10;    </div>&#10;  </div>&#10;&#10;&#10;&#10;  ",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "MG Enterprises est in 2014 are one of the leading manufacturers & trader of cleaning chemicals, laundary chemicals, industrial chemicals, housekeeping materials, dyes chemicals & Imported items.",
+      "id": "-NB6ndIxFuK_tZHSxMVL",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%201.39.52%20AM_1623874309423?alt=media&token=9ab33d9d-4336-44d4-a35d-d33769d48a7e",
+      "name": "MG Enterprises",
+      "pos": 9,
+      "tags": [
+        "-NBOwhZmCwybh6YlQVSy",
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1X20WMOeWHL8_zY6",
+        "-NBP1hkvYXioRxuHc_SJ"
+      ],
+      "url": "https://themgenterprises.com/",
+      "views": 54
+    },
+    "-NB6ndJ-hyf_ihDS49wk": {
+      "content": "<p>Welcome to Eduglobetech.. To Brighten your Future.. Eduglobetech offers an array of services to students who have a&#10;    dream to study abroad in USA, Sweden, Canada, UK and many more countries with more than 500 universities and more&#10;    than 100 courses options available. You just need to pick up your future.</p>&#10;&#10;&#10;<h4>&#10;    WHO WE ARE?&#10;</h4>&#10;<p>&#10;    The dictionary defines an educational consultant as&#34; The one who assists parents or students in planning educational&#10;    manoeuvre with his expertise somehow.&#34; There is no denying the fact that Eduglobetech has successfully played its&#10;    role with all dedication and devotion and served the purpose. <br>&#10;    <b>EDUGLOBETECH HELPS TO TRANSFORM YOUR DREAMS INTO PLANS.</b>&#10;</p>&#10;&#10;&#10;<br><br><br>&#10;<div class=\"row\">&#10;    &#10;    <div class=\"col-12 col-sm-6 col-lg-4 border-right\">&#10;        <div class=\"single-course-area d-flex align-items-center mb-100 wow fadeInUp\">&#10;            <div class=\"course-icon\">&#10;                <i class=\"icon-id-card\"></i>&#10;            </div>&#10;            <div class=\"course-content\">&#10;                <h4 class=\"text-teal mb-3\">Visa Guidance </h4>&#10;                <p>Eduglobetech also helps the students in the Visa process once they receive their offer&#10;                    letter.</p>&#10;            </div>&#10;        </div>&#10;    </div>&#10;    &#10;    <div class=\"col-12 col-sm-6 col-lg-4 border-right\">&#10;        <div class=\"single-course-area d-flex align-items-center mb-100 wow fadeInUp\">&#10;            <div class=\"course-icon\">&#10;                <i class=\"icon-responsive\"></i>&#10;            </div>&#10;            <div class=\"course-content\">&#10;                <h4 class=\"text-teal mb-3\">Applications</h4>&#10;                <p>With different processes and eligibility requirements of different universities, we help&#10;                    the students in their application process from the scratch.</p>&#10;            </div>&#10;        </div>&#10;    </div>&#10;    &#10;    <div class=\"col-12 col-sm-6 col-lg-4\">&#10;        <div class=\"single-course-area d-flex align-items-center mb-100 wow fadeInUp\">&#10;            <div class=\"course-icon\">&#10;                <i class=\"icon-map\"></i>&#10;            </div>&#10;            <div class=\"course-content\">&#10;                <h4 class=\"text-teal mb-3\">Counselling</h4>&#10;                <p>With so many options available,&#10;                    Still Confused?Which country? Which course?&#10;                    Eduglobetech helps you decide and design your future in the best possible way.</p>&#10;            </div>&#10;        </div>&#10;    </div>&#10;    &#10;&#10;&#10;</div>&#10;&#10;&#10;<br><br>&#10;<div class=\"container\">&#10;    <div class=\"row\">&#10;        <div class=\"col-12\">&#10;            <div class=\"section-heading text-center mx-auto wow fadeInUp\">&#10;                <span>The Best</span>&#10;                <h3>Top Popular Courses</h3>&#10;            </div>&#10;        </div>&#10;    </div>&#10;    <br><br>&#10;    <div class=\"row\">&#10;&#10;&#10;        &#10;        <div class=\"col-12 col-lg-6 border p-2\">&#10;            <div class=\"single-top-popular-course d-flex align-items-center flex-wrap mb-30 wow fadeInUp\">&#10;                <div class=\"popular-course-content\">&#10;                    <h5 class=\"text-teal mb-2\">Study in Australia</h5>&#10;                    &#10;                    <div class=\"course-ratings mb-3\">&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>&#10;                    </div>&#10;                    <p>There's so much in the world we don't know exists until we experience it first hand</p>&#10;                    <a href=\"http://eduglobetech.com/\" class=\"btn btn-xs btn-info rounded-0\">See More</a>&#10;                </div>&#10;                <div class=\"popular-course-thumb bg-img\">&#10;                </div>&#10;            </div>&#10;        </div>&#10;&#10;&#10;        &#10;        <div class=\"col-12 col-lg-6 border p-2\">&#10;            <div class=\"single-top-popular-course d-flex align-items-center flex-wrap mb-30 wow fadeInUp\">&#10;                <div class=\"popular-course-content\">&#10;                    <h5 class=\"text-teal mb-2\">Study in Canada</h5>&#10;                    &#10;                    <div class=\"course-ratings mb-3\">&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>&#10;                    </div>&#10;                    <p>The stories you create in your study abroad journey will last a lifetime.</p>&#10;                    <a href=\"http://eduglobetech.com/\" class=\"btn btn-xs btn-info rounded-0\">See More</a>&#10;                </div>&#10;                <div class=\"popular-course-thumb bg-img\">&#10;                </div>&#10;            </div>&#10;        </div>&#10;&#10;&#10;        &#10;        <div class=\"col-12 col-lg-6 border p-2\">&#10;            <div class=\"single-top-popular-course d-flex align-items-center flex-wrap mb-30 wow fadeInUp\">&#10;                <div class=\"popular-course-content\">&#10;                    <h5 class=\"text-teal mb-2\">Study in Sweden</h5>&#10;                    &#10;                    <div class=\"course-ratings mb-3\">&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>&#10;                    </div>&#10;                    <p>Education is the most powerful weapon which you can use to change the world.</p>&#10;                    <a href=\"http://eduglobetech.com/\" class=\"btn btn-xs btn-info rounded-0\">See More</a>&#10;                </div>&#10;                <div class=\"popular-course-thumb bg-img\">&#10;                </div>&#10;            </div>&#10;        </div>&#10;&#10;&#10;        &#10;        <div class=\"col-12 col-lg-6 border p-2\">&#10;            <div class=\"single-top-popular-course d-flex align-items-center flex-wrap mb-30 wow fadeInUp\">&#10;                <div class=\"popular-course-content\">&#10;                    <h5 class=\"text-teal mb-2\">Study in UK</h5>&#10;                    &#10;                    <div class=\"course-ratings mb-3\">&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>&#10;                        <i class=\"fa fa-star-o\" aria-hidden=\"true\"></i>&#10;                    </div>&#10;                    <p>Most of us wish that after our studies we will achieve a job that adds meaning and value&#10;                        to our lives</p>&#10;                    <a href=\"http://eduglobetech.com/\" class=\"btn btn-xs btn-info rounded-0\">See More</a>&#10;                </div>&#10;                <div class=\"popular-course-thumb bg-img\">&#10;                </div>&#10;            </div>&#10;        </div>&#10;    </div>&#10;</div>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "Welcome to Eduglobetech.. To Brighten your Future.. Eduglobetech offers an array of services to students who have a dream to study abroad in USA, Sweden, Canada, UK and many more countries with more than 500 universities and more than 100 courses options available. You just need to pick up your future.",
+      "id": "-NB6ndJ-hyf_ihDS49wk",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%201.52.49%20AM_1623875102438?alt=media&token=59412d7d-7e61-4fa0-b20c-bcf92f4b4e2c",
+      "name": "Eduglobetech",
+      "pos": 5,
+      "tags": [
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1hkvYXioRxuHc_SJ",
+        "-NBTV_j8mfbxYn1Sahzc"
+      ],
+      "url": "http://eduglobetech.com/",
+      "views": 159
+    },
+    "-NB6ndJ7PJamG_qVvB4h": {
+      "content": "<h2>Who we are?</h2>&#10;<p>&#10;    The fact that we are one of the leading web design &amp; Internet Marketing agency in India with extensive manpower at&#10;    our disposal also helps. Each and every individual in our team plays an important role in making the final product&#10;    or imparting the desired services. Coupled with talented and skilled manpower, we have our self owned development&#10;    center with an ability to house over 100 professionals at one shift, we have the resources to manage any sized web&#10;    project.&#10;</p>&#10;&#10;&#10;&#10;<h3 class=\"text-teal\">&#10;    We give 5% of our revenue to animal welfare and kids studies&#10;</h3>&#10;<br><br>&#10;<small>&#10;    OUR SERVICES&#10;</small>&#10;<h1>&#10;    We Do Everything&#10;</h1>&#10;<p>&#10;    You may be interested in what we can offer you. More services you can find below. We do everything at a high level.&#10;</p>&#10;&#10;&#10;&#10;<div class=\"row svs-carousel slick-initialized slick-slider\">&#10;    <div aria-live=\"polite\" class=\"slick-list draggable\" tabindex=\"0\">&#10;        <div class=\"slick-track row\">&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-cloned\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                  &#10;                    </div>&#10;                    <h3>SEO adwords</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-cloned\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                    &#10;                    </div>&#10;                    <h3>Campaign management</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-cloned\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                      &#10;                    </div>&#10;                    <h3>Photography &amp; videography</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-cloned\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                      &#10;                    </div>&#10;                    <h3>Printing</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-active\" aria-hidden=\"false\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                     &#10;                    </div>&#10;                    <h3>Social Media Marketing</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-active\" aria-hidden=\"false\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                 &#10;                    </div>&#10;                    <h3>Graphic designing</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-active\" aria-hidden=\"false\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                      &#10;                    </div>&#10;                    <h3>Content writing</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-active\" aria-hidden=\"false\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                   &#10;                    </div>&#10;                    <h3>Online reputation management</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                    &#10;                    </div>&#10;                    <h3>Event management </h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                    &#10;                    </div>&#10;                    <h3>SEO adwords</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                   &#10;                    </div>&#10;                    <h3>Campaign management</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                     &#10;                    </div>&#10;                    <h3>Photography &amp; videography</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                     &#10;                    </div>&#10;                    <h3>Printing</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-cloned\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                 &#10;                    </div>&#10;                    <h3>Social Media Marketing</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-cloned\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                       &#10;                    </div>&#10;                    <h3>Graphic designing</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-cloned\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                        &#10;                    </div>&#10;                    <h3>Content writing</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;            <div class=\"col-lg-3 col-md-3 border p-3 slick-slide slick-cloned\" aria-hidden=\"true\">&#10;                <div class=\"service-col wow fadeIn\">&#10;                    <div class=\"svs-icon\">&#10;                  &#10;                    </div>&#10;                    <h3>Online reputation management</h3>&#10;                   &#10;                </div>&#10;                &#10;            </div>&#10;        </div>&#10;    </div>&#10;&#10;&#10;&#10;&#10;&#10;&#10;</div>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "The fact that we are one of the leading web design & Internet Marketing agency in India with extensive manpower at our disposal also helps. Each and every individual in our team plays an important role in making the final product or imparting the desired services. Coupled with talented and skilled manpower, we have our self owned development center with an ability to house over 100 professionals at one shift, we have the resources to manage any sized web project.",
+      "id": "-NB6ndJ7PJamG_qVvB4h",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%202.04.44%20AM_1623875785207?alt=media&token=7999dd6b-fb35-4754-8b79-dc8ee05ff23f",
+      "name": "Digital Marketo",
+      "pos": 8,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBOw88MxGKrjfgiVosw"
+      ],
+      "url": "https://digitalmarketo.com/",
+      "views": 110
+    },
+    "-NB6ndJfCgXR7Gcpc3Yz": {
+      "content": "<p>StarsGyan is an online platform to provide knowledge of Astrology, Vastu, Numerology, Tarot and other ancient occult sciences.</p>&#10;<p>StarsGyan app is user friendly app and focuses on using modern technology to make available the ancient wisdom to all in easy way and through right experts.</p>&#10;<p>Our vision is to become best platform to provide consultations based on Astrology and other occult sciences. This vision shall be achieved by bringing right experts with deep knowledge and understanding of the science behind Astrology and their uses in life. One of the cardinal objectives is to remove the pervading misconceptions about Astrology and other occult sciences and reinstate the true values that it offers to our life.</p>&#10;<p>This shall be achieved by strict verification of the background of experts and feedback obtained from various other sources including some Gurus.</p>&#10;&#10;&#10;<div class=\"container \">&#10;    <div class=\"row mt-5 mb-4 \">&#10;        <div class=\"col-md-3\">&#10;&#10;&#10;        </div>&#10;        <div class=\"col-md-12 overlay p-5\">&#10;            <h4 class=\"text-center text-teal mb-5 h3\">&#10;                All the astrologers, tarot readers, vastu and numerology specialists are&#10;                trusted and certified by StarsGyan&#10;            </h4>&#10;&#10;&#10;            <p> Richness and depth of the occult world is quite&#10;                fascinating and&#10;                has its own sort of logic to understand the problem and give appropriate&#10;                remedies .&#10;                Astrology ascribes placement and movement of planets within twelve sections&#10;                of zodiac&#10;                (sign) and 27 nakshatras, while Numerology focuses on the magical world of&#10;                numbers and&#10;                their impact on our life.&#10;                shashtra describes how energy of a place of living or working impacts a&#10;                Vastu&#10;                person&#8217;s life.&#10;                Tarot is a deck of 78 beautiful cards, each with its own&#10;                symbolism and story, in which 22 major arcana cards represent a bigger&#10;                aspect of life&#10;                while 56 minor arcana reflect the trials and problems that we&#10;                experience on daily basis.</p>&#10;&#10;&#10;            <p class=\"text-white\">&#10;                All the astrologers, tarot readers, vastu and numerology specialists are&#10;                trusted and certified by StarsGyan after several rigorous rounds of&#10;                interviews, to whom users can easily get personally connected on chat, phone&#10;                or via free live streaming.&#10;            </p>&#10;&#10;&#10;            <a href=\"https://www.starsgyan.com/astrologers\" target=\"_self\" class=\"   btn btn-lg btn-danger\">&#10;                <span>Talk to an astrologer</span>&#10;            </a>&#10;        </div>&#10;&#10;&#10;    </div>&#10;</div>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "StarsGyan is an online platform to provide knowledge of Astrology, Vastu, Numerology, Tarot and other ancient occult sciences.  StarsGyan app is user friendly app and focuses on using modern technology to make available the ancient wisdom to all in easy way and through right experts.",
+      "id": "-NB6ndJfCgXR7Gcpc3Yz",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%202.12.20%20AM_1623876301546?alt=media&token=d69da006-1a3e-4c36-ab71-07fada0a9a75",
+      "name": "StarsGyan",
+      "pos": 4,
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBOw88MxGKrjfgiVosw"
+      ],
+      "url": "https://www.starsgyan.com/",
+      "views": 231
+    },
+    "-NB6ndJil8zJmgx07E6H": {
+      "content": "<p>&#10;    We, Fairdeal Enterprises introduce ourselves as one of the leading suppliers and exporters of Complete Pulp, Paper, Board Mill &amp; allied machinery equipment's and spares, located near the capital city of Delhi. Our firm stands for such genuineness with overall experience of more than 35 years standing in this field that has acquired matchless experience.&#10;</p>&#10;<p>&#10;    In addition to supplying of machines, we also undertake erection, commissioning, rebuilt of various equipment's of an integrated pulp and paper industries ranging from 10 T.P.D. to 200 T.P.D. We have over 400 clients in India and abroad that are giving high performance without complain to the entire satisfaction of the parties. With more than 8,000 items listed in inventory, we at Fairdeal have a broad selection of equipment and spare parts in stock and at mill sites around the world. We are well equipped with an advance data &amp; with sophisticated, friendly representatives we strive to keep serving the paper industry in the same manner.&#10;</p>&#10;<p>&#10;    Guided by the values of honesty &amp; integrity at all times, we adhere to a strict code of business ethics ensuring that our people reflect these values in all their dealings with our clients &amp; suppliers. Apart from these inspiring values our passion towards best service that has fuelled our progress over the years. Our prestigious customers have always benefited as a result of least defects.&#10;</p>&#10;&#10;&#10;<div class=\"\">&#10;    <div class=\"h3  bg-signature text-center text-white\"><br></div>&#10;</div>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndJil8zJmgx07E6H",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%202.23.29%20AM_1623877143536?alt=media&token=30adc918-4819-4d94-b7eb-6adabdea6011",
+      "name": "Fairdeal Machines",
+      "pos": 10,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOzQqHDFVlyBBTk6Pa",
+        "-NBP1hkvYXioRxuHc_SJ"
+      ],
+      "url": "https://fairdealmachines.com/",
+      "views": 37
+    },
+    "-NB6ndJmQIyAwF9lDAWS": {
+      "content": "<p class=\"h3\">Sign up as a&#10;    socialite&#10;&#10;&#10;    for free to be in the loop of&#10;&#10;&#10;    what's for tonight!</p>&#10;<div class=\"text-center\"><br></div>&#10;<p>&#10;    Never miss out on what's for tonight again. Experience a new kind of&#10;engagement with other socialites, venues and promoters. Get real time updates&#10;on specials and promotions. Explore, like, comment and share memorable&#10;nightlife experiences.&#10;</p>&#10;&#10;&#10;&#10;&#10;<br>&#10;&#10;<div class=\"text-center\">&#10;&#10;<a href=\"https://www.whats42nite.com/\" class=\"btn bg btn-lg btn-success\">Visit What's42nite</a></div><div class=\"text-center\"></div>&#10;&#10;&#10;",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "Never miss out on what's for tonight again. Experience a new kind of engagement with other socialites, venues and promoters. Get real time updates on specials and promotions. Explore, like, comment and share memorable nightlife experiences.",
+      "id": "-NB6ndJmQIyAwF9lDAWS",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-17%20at%209.08.08%20PM_1623944351612?alt=media&token=ffaa9750-3810-440b-8da2-40f5e5b0a6eb",
+      "name": "Whats42nite",
+      "pos": 1,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOwYirgL3TKPAY7BNj"
+      ],
+      "url": "https://www.whats42nite.com/",
+      "views": 262
+    },
+    "-NB6ndJq97hzR7JANgTn": {
+      "content": "<div class=\"alert  text-dark\" role=\"alert\">&#10;    <h2><i class=\"fa fa-wrench\" aria-hidden=\"true\"></i> The application is under development. </h2><p><br>&#10;</p><div class=\"text-center\">&#10;<img src=\"https://lh5.googleusercontent.com/ecj9LHsiGRTf4Qm0W3TdurHuBHiTWSCuHR4rWDLP45Sj9zxqkJXsPdAg7ABc0CQpG7U_tOiXrkL6HSXtAPvfhimtetcIJUItDJ9Xinfm40SeriyM-5Q1ziaMx6zs_BkuGgNTEfJB\" class=\"img-fluid\">&#10;<br>&#10;<br>&#10;<img src=\"https://res.cloudinary.com/subooralaa/image/upload/v1624121369/Screenshot_2021-06-19_at_10.18.15_PM_qcoeou.png\" alt=\"\" class=\"img-fluid\">&#10;<br><br>&#10;<img src=\"https://lh3.googleusercontent.com/yeI-fPr5YuUiAFDdBScQJB0EURR05GQTD2xUuC36xdiyYfgm3QRCzhRANU7bEczk8a1w2VXml4rrVSp1pwA7ZTriDoWPBZKfwDRBdsU1qW0IxIlIdThmKvwcD0_jKLh3FtHtYAc4\" class=\"img-fluid\">&#10;</div>&#10;&#10;&#10;&#10;&#10;</div>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndJq97hzR7JANgTn",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-18%20at%207.27.52%20PM_1624024740126?alt=media&token=1a8145f1-f71d-4418-af05-827809e4b8bf",
+      "name": "Zoopr App",
+      "pos": 11,
+      "tags": [
+        "-NBOxH4cSJfTFEDTn2wE",
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOz4Hpqg_GGgHWQDEF"
+      ],
+      "url": "",
+      "views": 105
+    },
+    "-NB6ndJvWQWqt9Ua0ec2": {
+      "content": "&#10;&#10;&#10;<p>I made this project during the lockdown when it became difficult for me to keep a record of my progress and the work I have done every day. So I decided to create something where I can keep a record of the work I did and the result was this. In this web app, I could add the tasks I did and export them as excel. Later testers find it useful and they started assigning my tasks here.</p>&#10; &#10;&#10;&#10;",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndJvWQWqt9Ua0ec2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-18%20at%208.44.54%20PM_1624029531634?alt=media&token=68405de9-db09-4683-a874-60bb2b0a21fc",
+      "name": "Praxiv Bug Tracker",
+      "pos": 12,
+      "tags": [
+        "-NBOw13Np-GlNsZr1I43"
+      ],
+      "url": "http://boshorini.com/praxiv/",
+      "views": 55
+    },
+    "-NB6ndJxziBQDG1HdupR": {
+      "content": "<iframe height=\"608\" style=\"width: 100%;\" scrolling=\"no\" title=\"dragon ball game using js\" src=\"https://codepen.io/suboor-khan/embed/VwvgzoY?height=608&theme-id=dark&default-tab=result\" frameborder=\"no\" loading=\"lazy\" allowtransparency=\"true\" allowfullscreen=\"true\">   See the Pen <a href='https://codepen.io/suboor-khan/pen/VwvgzoY'>dragon ball game using js</a> by Suboor Khan   (<a href='https://codepen.io/suboor-khan'>@suboor-khan</a>) on <a href='https://codepen.io'>CodePen</a>. </iframe>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndJxziBQDG1HdupR",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-19%20at%201.51.00%20AM_1624047733316?alt=media&token=4ca4db8e-759e-491e-aeea-478096967eaa",
+      "name": "Dragon ball game",
+      "pos": 13,
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://codepen.io/suboor-khan/pen/VwvgzoY",
+      "views": 46
+    },
+    "-NB6ndK4LRRY-wt9VLee": {
+      "content": "<iframe height=\"594\" style=\"width: 100%;\" scrolling=\"no\" title=\"React DailyUI - 003 - Landing Page\" src=\"https://codepen.io/suboor-khan/embed/YzZgdOr?height=594&theme-id=dark&default-tab=result\" frameborder=\"no\" loading=\"lazy\" allowtransparency=\"true\" allowfullscreen=\"true\">   See the Pen <a href='https://codepen.io/suboor-khan/pen/YzZgdOr'>React DailyUI - 003 - Landing Page</a> by Suboor Khan   (<a href='https://codepen.io/suboor-khan'>@suboor-khan</a>) on <a href='https://codepen.io'>CodePen</a>. </iframe>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndK4LRRY-wt9VLee",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-19%20at%202.32.10%20AM_1624050190712?alt=media&token=e3d22fe5-2abe-4668-837e-88d24a5dbcc0",
+      "name": "Netflix Clone",
+      "pos": 14,
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN"
+      ],
+      "url": "https://codepen.io/suboor-khan/pen/YzZgdOr?editors=1010",
+      "views": 50
+    },
+    "-NB6ndK7QU2wKZUoLGgG": {
+      "content": "<iframe height=\"506\" style=\"width: 100%;\" scrolling=\"no\" title=\"Spotify Artist Page UI\" src=\"https://codepen.io/suboor-khan/embed/preview/QWpozJP?height=506&theme-id=dark&default-tab=result\" frameborder=\"no\" loading=\"lazy\" allowtransparency=\"true\" allowfullscreen=\"true\">   See the Pen <a href='https://codepen.io/suboor-khan/pen/QWpozJP'>Spotify Artist Page UI</a> by Suboor Khan   (<a href='https://codepen.io/suboor-khan'>@suboor-khan</a>) on <a href='https://codepen.io'>CodePen</a>. </iframe>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndK7QU2wKZUoLGgG",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-19%20at%202.38.34%20AM_1624050550260?alt=media&token=6874667a-1741-448d-b0cc-b4525fb7299f",
+      "name": "Spotify UI Clone",
+      "pos": 15,
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN"
+      ],
+      "url": "",
+      "views": 30
+    },
+    "-NB6ndKAMawEZMZTn6BA": {
+      "content": "<p>Simple blogging system created by using React JS, Redux for global state management and JSON Server as a fake&#10;    database </p>&#10;<br><br>&#10;<div class=\"text-center\">&#10;    <img src=\"https://res.cloudinary.com/subooralaa/image/upload/v1624099930/Screenshot_2021-06-19_at_4.13.45_PM_qlqwkc.png\" alt=\"\" class=\"img-fluid zoom3 w-50\">&#10;    <br><br>&#10;    <img src=\"https://res.cloudinary.com/subooralaa/image/upload/v1624099968/Screenshot_2021-06-19_at_4.22.28_PM_dxwrqo.png\" alt=\"\" class=\"img-fluid w-50 zoom3\">&#10;</div>&#10;&#10;&#10;&#10;<br><br>&#10;<p>Run these commands after downloading the source code</p>&#10;<blockquote>&#10;&#10;&#10;        $ npm install <br><br>&#10;        $ npm install -g json-server <br><br>&#10;        $ json-server --watch data/db.json --port 8000 <br><br>&#10;        $ npm start&#10;&#10;&#10;</blockquote>&#10;<br>&#10;&#10;&#10;<div class=\"text-center\">&#10;    <a href=\"https://res.cloudinary.com/subooralaa/raw/upload/v1624100377/blogger-app_xeapvh.zip\" download=\"\" class=\" btn-primary btn\"> Source code </a>&#10;</div>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndKAMawEZMZTn6BA",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-19%20at%204.13.45%20PM_1624099534363?alt=media&token=3189984b-39e7-4e49-bc2b-96a0b6fbb2ab",
+      "name": "React Blogger",
+      "pos": 16,
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBP1hkvYXioRxuHc_SJ",
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "",
+      "views": 36
+    },
+    "-NB6ndKESOvY1rdGL2as": {
+      "content": "   See the Pen &lt;a href='https://codepen.io/suboor-khan/pen/oNZOdqz'&gt;Full-Screen Background Video using CSS Grid &amp;amp; object-fit&lt;/a&gt; by Suboor Khan   (&lt;a href='https://codepen.io/suboor-khan'&gt;@suboor-khan&lt;/a&gt;) on &lt;a href='https://codepen.io'&gt;CodePen&lt;/a&gt;. ",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndKESOvY1rdGL2as",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-21%20at%2012.11.15%20AM_1624214675886?alt=media&token=d6060b81-cb00-475f-80a4-fdd3f6122288",
+      "name": "Animated Pubg Screen",
+      "pos": 17,
+      "tags": [
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1wrywYrJ_vvIna1H"
+      ],
+      "url": "http://suboorkhan.in/pubg-login/index.html",
+      "views": 37
+    },
+    "-NB6ndKILZGG2mpqKnDU": {
+      "content": "<p>Our company runs on the name of Dazzle Industries(export quality of all kinds of bags and shoe fittings) address of our business is house no 20, tan tan para, Aligarh.</p>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndKILZGG2mpqKnDU",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-22%20at%2011.26.10%20PM_1624384731315?alt=media&token=998c1ac8-5584-46eb-bf05-115854d25d74",
+      "name": "Dazzle Industries",
+      "pos": 18,
+      "tags": [
+        "-NBOwhZmCwybh6YlQVSy",
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBP1wrywYrJ_vvIna1H"
+      ],
+      "url": "https://suboorkhan.in/dazzle/index.html",
+      "views": 33
+    },
+    "-NB6ndKM4rMXWppDsO8l": {
+      "content": "<p>Three.js is a cross-browser JavaScript library and application programming interface used to create and display animated 3D computer graphics in a web browser using WebGL. The source code is hosted in a repository on GitHub.&#160;</p><p></p>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndKM4rMXWppDsO8l",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-24%20at%207.44.09%20PM_1624544406568?alt=media&token=e5684476-3e48-4a8c-9d98-abd2492d0c18",
+      "name": "First 3D Website",
+      "pos": 19,
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://suboorkhan.in/3d-web/",
+      "views": 52
+    },
+    "-NB6ndKO_d1FDflFbkXE": {
+      "content": "<h4>Suboor Khan</h4><div class=\"loc\"><span class=\"fas fa-map-marked-alt\"></span>&#160;Ghaziabad, India</div><p>Hello! I&#8217;m Suboor Khan a self-taught Designer &amp; Developer with over two years work experience. I am very Passionate, Love to Innovate and educate in Development. For me programming is not just to learn how to code or learn different programming languages, it is all about new ideas, implementation and create something new which may change the world!. Now I&#8217;m based in Gurugaram, Haryana, working for Praxiv IT Solution.</p><p>I've already contributed to over a dozen projects. No two projects are the same and I take a pragmatic approach to each job I take on, focussing on delivering work that is as accessible and optimised as possible.</p>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndKO_d1FDflFbkXE",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-06-29%20at%203.27.38%20PM_1624960739630?alt=media&token=b7e505b4-8410-4685-8b74-d5ca1e04d583",
+      "name": "My old website",
+      "pos": 6,
+      "tags": [
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBOxQ-ccbawyxhhhGN-",
+        "-NBP1X20WMOeWHL8_zY6"
+      ],
+      "url": "https://suboorkhan.com/2019/",
+      "views": 233
+    },
+    "-NB6ndKQ0lOjtU3yNQId": {
+      "content": "<span>Ionic is open source mobile UI toolkit for building high quality, cross-platform native and web app experiences. Move faster with a single code base, running everywhere with JavaScript and the Web.</span>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndKQ0lOjtU3yNQId",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-07-04%20at%2012.16.17%20AM_1625338058523?alt=media&token=03c4f14d-6828-4145-9bda-ab9a4bffa716",
+      "name": "My Ionic App",
+      "pos": 20,
+      "tags": [
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOxH4cSJfTFEDTn2wE",
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOxQ-ccbawyxhhhGN-",
+        "-NBOz4Hpqg_GGgHWQDEF"
+      ],
+      "url": "https://suboorkhan.in/ionic",
+      "views": 27
+    },
+    "-NB6ndKTPTf0kddJRCeX": {
+      "content": "<span>Vue (pronounced /vju&#720;/, like&#160;</span><span>view</span><span>) is a&#160;</span><span>progressive framework</span><span>&#160;for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with&#160;</span><a href=\"https://vuejs.org/v2/guide/single-file-components.html\">modern tooling</a><span>&#160;and&#160;</span><a href=\"https://github.com/vuejs/awesome-vue#components--libraries\" target=\"_blank\" rel=\"noopener\">supporting libraries</a><span>.</span>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "",
+      "id": "-NB6ndKTPTf0kddJRCeX",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-07-04%20at%209.39.29%20PM_1625415039883?alt=media&token=37609f67-659c-459e-9f30-88a30596f3dc",
+      "name": "Vue JS website",
+      "pos": 22,
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBP1wrywYrJ_vvIna1H"
+      ],
+      "url": "https://suboorkhan.in/vue/",
+      "views": 24
+    },
+    "-NB6ndKWOJQ4h6nNT74C": {
+      "content": "<a class=\"btn \" href=\"https://suboorkhan.in/projects/react-bootstrap-clone/react-bootstrap-clone-file.zip\">&#10;<i class=\"fa fa-download\" aria-hidden=\"true\"></i> Download the source code </a>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence was created for the bliss of souls like mine.I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.",
+      "id": "-NB6ndKWOJQ4h6nNT74C",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-07-07%20at%209.38.21%20PM_1625674199471?alt=media&token=cd77b945-60d8-45fc-b287-177e738acda0",
+      "name": "React JS Website clone using booststrap",
+      "pos": 7,
+      "tags": [
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1hkvYXioRxuHc_SJ",
+        "-NBP1X20WMOeWHL8_zY6"
+      ],
+      "url": "https://suboorkhan.in/myprojects/react-bootstrap-clone/",
+      "views": 71
+    },
+    "-NB6ndKYX7JGFhE7cObz": {
+      "content": "<p>Simple blogging system created by using Node JS, Express JS and EJS as view engine.</p>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "Simple blogging system created by using Node JS, Express JS and EJS as view engine.",
+      "id": "-NB6ndKYX7JGFhE7cObz",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-07-08%20at%208.21.34%20PM_1625755958282?alt=media&token=343754db-b932-4509-ae26-55b58a8cd746",
+      "name": "Node Blogger",
+      "pos": 23,
+      "tags": [
+        "-NBOwhZmCwybh6YlQVSy",
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1hkvYXioRxuHc_SJ",
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://suboor-nodeapp.herokuapp.com/",
+      "views": 26
+    },
+    "-NB6ndKaylXxX4WigVom": {
+      "content": "<span>Quickly design and customize responsive mobile-first sites with Bootstrap, the world&#8217;s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</span>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.",
+      "id": "-NB6ndKaylXxX4WigVom",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-07-13%20at%203.30.41%20PM_1626170497065?alt=media&token=e293a6d5-074e-403f-a825-60ef10c67896",
+      "name": "Bootstrap 4 Profile page",
+      "pos": 21,
+      "tags": [
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1hkvYXioRxuHc_SJ",
+        "-NBP1X20WMOeWHL8_zY6"
+      ],
+      "url": "https://suboorkhan.in/myprojects/bootstrap-profile/",
+      "views": 16
+    },
+    "-NB6ndKdVnv5exyVByJC": {
+      "content": "<h3>&#10;    Let your Resume highlight the best you!&#10;</h3>&#10;<p>&#10;    Make a perfect resume in 2021 and get your dream job using the free resume builder. Select a template. Personalize it. Get more interviews&#10;</p>",
+      "createdAt": "Sun Sep 04 2022",
+      "description": "Make a perfect resume  and get your dream job using the free resume builder. Select a template. Personalize it. Get more interviews",
+      "id": "-NB6ndKdVnv5exyVByJC",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/suboor-31b5a.appspot.com/o/Screenshot%202021-08-01%20at%2012.38.26%20PM_1627801981098?alt=media&token=20e4a7a8-26b0-4359-b702-555196258abd",
+      "name": "CV Maker App",
+      "pos": 27,
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBP1wrywYrJ_vvIna1H",
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1X20WMOeWHL8_zY6"
+      ],
+      "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2F2022-10-10T20%3A59%3A55.241Zcv-maker.zip?alt=media&token=23e93e31-ae2d-4640-a8e5-f9469d197f7c",
+      "views": 79
+    },
+    "-NK_aFqzYvO6ldQAUGhg": {
+      "content": "<h1>sx-paginate</h1><p><a href=\"https://www.npmjs.com/package/sx-paginate\" rel=\"nofollow\"><img src=\"https://camo.githubusercontent.com/636ebd0395a9d14e8fe321412edb58145a0b99262434faf01266d760626f86ed/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f73782d706167696e6174652e737667\" alt=\"NPM\"></a>&#160;<a href=\"https://standardjs.com/\" rel=\"nofollow\"><img src=\"https://camo.githubusercontent.com/bde227e3207c7143032c0feb73889ffbda8eb1ef234b820b915ccaf74f9c66d7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f64655f7374796c652d7374616e646172642d627269676874677265656e2e737667\" alt=\"JavaScript Style Guide\"></a></p><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://user-images.githubusercontent.com/39632489/209886070-26795c0b-01df-4fe8-a516-8c6043bfedd4.png\"><img src=\"https://user-images.githubusercontent.com/39632489/209886070-26795c0b-01df-4fe8-a516-8c6043bfedd4.png\" alt=\"Screenshot 2022-12-29 at 5 18 48 AM\"></a></p><p>DEMO -&#160;<a href=\"https://stackblitz.com/edit/react-hctxyq?file=src/App.js\" rel=\"nofollow\">https://stackblitz.com/edit/react-hctxyq?file=src/App.js</a></p><h2><a class=\"anchor\" aria-hidden=\"true\" href=\"https://www.npmjs.com/package/sx-paginate#install\"><span aria-hidden=\"true\" class=\"octicon octicon-link\"></span></a>Install</h2><div class=\"highlight highlight-source-shell\"><pre>npm install --save sx-paginate</pre></div><h2><a class=\"anchor\" aria-hidden=\"true\" href=\"https://www.npmjs.com/package/sx-paginate#usage\"><span aria-hidden=\"true\" class=\"octicon octicon-link\"></span></a>Usage</h2><div class=\"highlight highlight-source-tsx\"><pre><span class=\"pl-k\">import</span> <span class=\"pl-smi\">React</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">{</span> <span class=\"pl-s1\">useState</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">useEffect</span> <span class=\"pl-kos\">}</span> <span class=\"pl-k\">from</span> <span class=\"pl-s\">'react'</span>&#10;&#10;<span class=\"pl-k\">import</span> <span class=\"pl-kos\">{</span> <span class=\"pl-smi\">SxPaginate</span> <span class=\"pl-kos\">}</span> <span class=\"pl-k\">from</span> <span class=\"pl-s\">'sx-paginate'</span>&#10;<span class=\"pl-k\">import</span> <span class=\"pl-s\">'sx-paginate/dist/index.css'</span>&#10;&#10;<span class=\"pl-k\">const</span> <span class=\"pl-smi\">App</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>&#10;  <span class=\"pl-k\">const</span> <span class=\"pl-kos\">[</span><span class=\"pl-s1\">posts</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">setPosts</span><span class=\"pl-kos\">]</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">useState</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span>&#10;  <span class=\"pl-k\">const</span> <span class=\"pl-kos\">[</span><span class=\"pl-s1\">paginatedPosts</span><span class=\"pl-kos\">,</span> <span class=\"pl-s1\">setPaginatedPosts</span><span class=\"pl-kos\">]</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">useState</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">[</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span>&#10;&#10;  <span class=\"pl-k\">const</span> <span class=\"pl-en\">onPaginate</span> <span class=\"pl-c1\">=</span> <span class=\"pl-kos\">(</span><span class=\"pl-s1\">pageNumber</span>: <span class=\"pl-smi\">number</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>&#10;    <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">pageNumber</span><span class=\"pl-kos\">)</span>&#10;  <span class=\"pl-kos\">}</span>&#10;&#10;  <span class=\"pl-en\">useEffect</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>&#10;    <span class=\"pl-kos\">(</span><span class=\"pl-k\">async</span> <span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>&#10;      <span class=\"pl-k\">const</span> <span class=\"pl-s1\">res</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-en\">fetch</span><span class=\"pl-kos\">(</span><span class=\"pl-s\">'https://dummyjson.com/posts'</span><span class=\"pl-kos\">)</span>&#10;      <span class=\"pl-k\">const</span> <span class=\"pl-s1\">data</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-s1\">res</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">json</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span>&#10;      <span class=\"pl-en\">setPosts</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">data</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">posts</span><span class=\"pl-kos\">)</span>&#10;    <span class=\"pl-kos\">}</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span>&#10;  <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">[</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span>&#10;&#10;  <span class=\"pl-en\">useEffect</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">{</span>&#10;    <span class=\"pl-smi\">console</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">log</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">paginatedPosts</span><span class=\"pl-kos\">)</span>&#10;  <span class=\"pl-kos\">}</span><span class=\"pl-kos\">,</span> <span class=\"pl-kos\">[</span><span class=\"pl-s1\">paginatedPosts</span><span class=\"pl-kos\">]</span><span class=\"pl-kos\">)</span>&#10;&#10;  <span class=\"pl-k\">return</span> <span class=\"pl-kos\">(</span>&#10;    <span class=\"pl-c1\">&lt;</span><span class=\"pl-c1\">&gt;</span>&#10;      <span class=\"pl-kos\">{</span><span class=\"pl-s1\">paginatedPosts</span><span class=\"pl-kos\">.</span><span class=\"pl-en\">map</span><span class=\"pl-kos\">(</span><span class=\"pl-kos\">(</span><span class=\"pl-s1\">post</span>: <span class=\"pl-smi\">any</span><span class=\"pl-kos\">)</span> <span class=\"pl-c1\">=&gt;</span> <span class=\"pl-kos\">(</span>&#10;        <span class=\"pl-c1\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">key</span><span class=\"pl-c1\">=</span><span class=\"pl-kos\">{</span><span class=\"pl-s1\">post</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">id</span><span class=\"pl-kos\">}</span><span class=\"pl-c1\">&gt;</span><span class=\"pl-kos\">{</span><span class=\"pl-s1\">post</span><span class=\"pl-kos\">.</span><span class=\"pl-c1\">title</span><span class=\"pl-kos\">}</span><span class=\"pl-c1\">&lt;</span><span class=\"pl-c1\">/</span><span class=\"pl-ent\">div</span><span class=\"pl-c1\">&gt;</span>&#10;      <span class=\"pl-kos\">)</span><span class=\"pl-kos\">)</span><span class=\"pl-kos\">}</span>&#10;&#10;      <span class=\"pl-c1\">&lt;</span><span class=\"pl-smi\">SxPaginate</span>&#10;        <span class=\"pl-c1\">recordsPerPage</span><span class=\"pl-c1\">=</span><span class=\"pl-kos\">{</span><span class=\"pl-c1\">10</span><span class=\"pl-kos\">}</span>&#10;        <span class=\"pl-c1\">onPaginate</span><span class=\"pl-c1\">=</span><span class=\"pl-kos\">{</span><span class=\"pl-s1\">onPaginate</span><span class=\"pl-kos\">}</span>&#10;        <span class=\"pl-c1\">records</span><span class=\"pl-c1\">=</span><span class=\"pl-kos\">{</span><span class=\"pl-s1\">posts</span><span class=\"pl-kos\">}</span>&#10;        <span class=\"pl-c1\">setRecords</span><span class=\"pl-c1\">=</span><span class=\"pl-kos\">{</span><span class=\"pl-s1\">setPaginatedPosts</span> <span class=\"pl-k\">as</span> <span class=\"pl-smi\">any</span><span class=\"pl-kos\">}</span>&#10;        <span class=\"pl-c1\">activeBtnStyle</span><span class=\"pl-c1\">=</span><span class=\"pl-kos\">{</span><span class=\"pl-kos\">{</span> <span class=\"pl-c1\">background</span>: <span class=\"pl-s\">'coral'</span> <span class=\"pl-kos\">}</span><span class=\"pl-kos\">}</span>&#10;      <span class=\"pl-c1\">/</span><span class=\"pl-c1\">&gt;</span>&#10;    <span class=\"pl-c1\">&lt;</span><span class=\"pl-c1\">/</span><span class=\"pl-c1\">&gt;</span>&#10;  <span class=\"pl-kos\">)</span>&#10;<span class=\"pl-kos\">}</span>&#10;&#10;<span class=\"pl-k\">export</span> <span class=\"pl-k\">default</span> <span class=\"pl-smi\">App</span></pre></div>",
+      "createdAt": "Sat Dec 31 2022",
+      "description": "React JS pagination library makes pagination simple",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/projects%2Ffeatured.jpeg___337featured.jpeg?alt=media&token=794de658-11f9-42bc-8866-81e173286e62",
+      "name": "sx-paginate",
+      "pos": 2,
+      "tags": [
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOveKa1j3vVsC9jPHN"
+      ],
+      "url": "https://www.npmjs.com/package/sx-paginate",
+      "views": 30
+    },
+    "-NK_agKDdwv1ie7EEuxC": {
+      "content": "<h1>create-bootstrap-app</h1><p>Create bootstrap is CLI tool to create a boilerplate template for bootstrap 4 app.</p><div class=\"highlight highlight-source-shell\"><pre>    -index.html&#10;    -script.js&#10;    -style.css</pre></div><h2><a class=\"anchor\" aria-hidden=\"true\" href=\"https://www.npmjs.com/package/@suboorkhan/create-bootstrap-app#install\"><span aria-hidden=\"true\" class=\"octicon octicon-link\"></span></a>Install</h2><div class=\"highlight highlight-source-shell\"><pre>npm i -g @suboorkhan/create-bootstrap-app</pre></div><h2><a class=\"anchor\" aria-hidden=\"true\" href=\"https://www.npmjs.com/package/@suboorkhan/create-bootstrap-app#usage\"><span aria-hidden=\"true\" class=\"octicon octicon-link\"></span></a>Usage</h2><div class=\"highlight highlight-source-shell\"><pre>create-bootstrap-app</pre></div>",
+      "createdAt": "Sat Dec 31 2022",
+      "description": "Create bootstrap is CLI tool to create a boilerplate template for bootstrap 4 app.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/projects%2Ffeatured.jpeg___140featured.jpeg?alt=media&token=6b2eb072-eaf1-4dd6-8784-02db169fef84",
+      "name": "create-bootstrap-app",
+      "pos": 3,
+      "tags": [
+        "-NBOwhZmCwybh6YlQVSy"
+      ],
+      "url": "https://www.npmjs.com/package/@suboorkhan/create-bootstrap-app",
+      "views": 23
+    }
+  },
+  "session-video": {
+    "description": "I can understand how difficult it is to land your first job as a fresher and how scary coding interviews are. When I was a fresher I had to face a lot of rejections which later turned into demotivation and then when I decided once I gain a good amount of knowledge I will help freshers as much as I can (Free of cost of course) by sharing all the things I wish someone could teach me and the mistakes I did when I was a fresher.",
+    "joinUrl": "https://chat.whatsapp.com/EBwSQrX2HCbC9YqoCJD6bI",
+    "title": "Land your dream job",
+    "videoUrl": "https://www.youtube.com/embed/Ikcw6FAumk8"
+  },
+  "sessions": {
+    "-NDx3LI_FtSwPgJuhqhr": {
+      "attachedFiles": [
+        {
+          "name": "source-code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2FDom.zip___704Dom.zip?alt=media&token=16063637-7933-4c76-87a1-19f8a571687e"
+        }
+      ],
+      "createdAt": "Sun Oct 09 2022",
+      "date": "2022-10-02",
+      "description": "The Document Object Model is a cross-platform and language-independent interface that treats an XML or HTML document as a tree structure wherein each node is an object representing a part of the document. The DOM represents a document with a logical tree.",
+      "id": "-NDx3LI_FtSwPgJuhqhr",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2Fdom-in-js.jpeg2022-10-09T14%3A06%3A10.765Z?alt=media&token=0c7d6e76-4db4-4770-97e9-3720766dedc6",
+      "name": "DOM Manipulation",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:00"
+      },
+      "tags": [
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1X20WMOeWHL8_zY6",
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://meet.google.com/bzp-suoc-qfx",
+      "views": 4
+    },
+    "-NDx4lqf3BE7R2NoFOE2": {
+      "attachedFiles": [
+        {
+          "name": "source-code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fjs%20basics.zip___412js%20basics.zip?alt=media&token=8e13ce12-dbd7-42e6-9131-7478379f9c8f"
+        }
+      ],
+      "createdAt": "Sun Oct 09 2022",
+      "date": "2022-09-25",
+      "description": "JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class functions.",
+      "id": "-NDx4lqf3BE7R2NoFOE2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2F1_LyZcwuLWv2FArOumCxobpA.png2022-10-09T14%3A12%3A25.843Z?alt=media&token=9f2a31c4-d4f0-4700-83c6-7ac636de809e",
+      "name": "Basics of Javascript",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:00"
+      },
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://meet.google.com/bzp-suoc-qfx",
+      "views": 8
+    },
+    "-NE0RUDgbYNL5gQzqcwU": {
+      "attachedFiles": [
+        {
+          "name": "Source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fpromises-cource%20code.zip___865promises-cource%20code.zip?alt=media&token=4b968539-8b15-49c4-b095-1f86f719ef00"
+        }
+      ],
+      "createdAt": "Mon Oct 10 2022",
+      "date": "2022-10-16",
+      "description": "Promises are used to handle asynchronous operations in JavaScript. They are easy to manage when dealing with multiple asynchronous tasks",
+      "id": "-NE0RUDgbYNL5gQzqcwU",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2Fvugz15i3sz2asv64clw3.webp2022-10-10T10%3A30%3A12.031Z?alt=media&token=64609325-2476-4928-9a2e-a2532146a6d3",
+      "name": "Javascript Promises",
+      "sessionTiming": {
+        "end": "22:00",
+        "start": "21:00"
+      },
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://meet.google.com/nhm-skjm-fmm",
+      "videoUrl": "https://www.youtube.com/embed/lXFgS8vbej4",
+      "views": 7
+    },
+    "-NE2IeCQM8sm8mYDpNlX": {
+      "attachedFiles": [
+        {
+          "name": "cv-maker-code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2F2022-10-10T20%3A59%3A55.241Zcv-maker.zip?alt=media&token=23e93e31-ae2d-4640-a8e5-f9469d197f7c"
+        }
+      ],
+      "createdAt": "Tue Oct 11 2022",
+      "date": "2022-10-09",
+      "description": "Let's use everything we have learnt so far and create a CV maker app by using Javascript😎",
+      "id": "-NE2IeCQM8sm8mYDpNlX",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2Fonline-job-application-color-icon-job-search-website-online-resume-builder-cv-maker-recruitment-website-isolated-illustration-vector.webp2022-10-10T19%3A10%3A52.765Z?alt=media&token=3573e73c-2ab8-43c2-a539-16ea4e420132",
+      "name": "Javascript CV maker app",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:00"
+      },
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBP1MUdVcaAuURXispK",
+        "-NBP1hkvYXioRxuHc_SJ"
+      ],
+      "url": "googlemeet.com",
+      "views": 5
+    },
+    "-NE2nY0aI5xB9B7OmsPb": {
+      "attachedFiles": [
+        {
+          "name": "source-code-part1",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fangular-sc.zip___382angular-sc.zip?alt=media&token=d3e3ccbf-5451-4f42-8ce5-1334b1060849"
+        }
+      ],
+      "createdAt": "Tue Oct 11 2022",
+      "date": "2022-10-08",
+      "description": "Let's create a blogging system by using angular and firebase",
+      "id": "-NE2nY0aI5xB9B7OmsPb",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2F0_fHE-V-ZEUsOvt7BH.png___5180_fHE-V-ZEUsOvt7BH.png?alt=media&token=ae4460fc-ecc4-4d4f-858b-1acc8f1a8d27",
+      "name": "Angular blogging system part1",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:00"
+      },
+      "tags": [
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOxQ-ccbawyxhhhGN-",
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NBOwYirgL3TKPAY7BNj"
+      ],
+      "url": "google.com",
+      "views": 2
+    },
+    "-NFcOyRPW4qUq-VNkfap": {
+      "attachedFiles": [
+        {
+          "name": "Source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fproto.zip___757proto.zip?alt=media&token=90dda22b-b35f-4555-bde7-f86c8a071bb0"
+        }
+      ],
+      "createdAt": "Sun Oct 30 2022",
+      "date": "2022-10-30",
+      "description": "The 5th edition of ECMA-262 standard aka ES5 introduced really useful methods of the built-in Array object : forEach, every, some, filter, map, reduce, reduceRight. ",
+      "id": "-NFcOyRPW4qUq-VNkfap",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2Fmaxresdefault.jpeg___237maxresdefault.jpeg?alt=media&token=17142a9c-1d89-49d9-9049-5f6b4e387763",
+      "name": "Advance - Javascript Arrays",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:30"
+      },
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://meet.google.com/mep-sdnr-jas",
+      "views": 20
+    },
+    "-NGBg-45XTLY3_k3Srpa": {
+      "attachedFiles": [
+        {
+          "name": "script.js",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fscript.js___616script.js?alt=media&token=afe20112-2b4a-4403-91c2-16f3f5efa53b"
+        },
+        {
+          "name": "source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fproblems.zip___794problems.zip?alt=media&token=5cf1c4d3-0fbf-4cf9-b463-09807fb3d5d7"
+        }
+      ],
+      "createdAt": "Sun Nov 06 2022",
+      "date": "2022-11-06",
+      "description": "Let's solve some basic coding problems by using javascript",
+      "id": "-NGBg-45XTLY3_k3Srpa",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2F1_KcPnE4fLNljhPOgPaFCHrg.png___121_KcPnE4fLNljhPOgPaFCHrg.png?alt=media&token=86a25bcb-5117-4212-809a-9e8688a9a544",
+      "name": "Basic Problems Solving",
+      "sessionTiming": {
+        "end": "22:00",
+        "start": "20:00"
+      },
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NEzkEjDlQ1xiXeB2Hm1"
+      ],
+      "url": "https://meet.google.com/aif-tgaw-nrf",
+      "videoUrl": "https://www.youtube.com/embed/Ikcw6FAumk8",
+      "views": 19
+    },
+    "-NGkV-W1toUPqSxEI87Q": {
+      "createdAt": "Sun Nov 13 2022",
+      "date": "2022-11-13",
+      "description": "Let's understand some basic concepts of OOP",
+      "id": "-NGkV-W1toUPqSxEI87Q",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2F1_m8SG-c1f65wgsvu3RxdrTw.png___211_m8SG-c1f65wgsvu3RxdrTw.png?alt=media&token=4e05a39c-0617-4add-967e-3414f3f82a83",
+      "name": "Basics of Object Oriented Programming",
+      "sessionTiming": {
+        "end": "23:30",
+        "start": "22:00"
+      },
+      "tags": [
+        "-NBOzQqHDFVlyBBTk6Pa",
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBOvqGfehfBnpKK-QwO"
+      ],
+      "url": "https://meet.google.com/urt-tjff-gfw",
+      "views": 62
+    },
+    "-NHEtdcZWJ97NRk_2Mf5": {
+      "attachedFiles": [
+        {
+          "name": "Source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fscript.js___353script.js?alt=media&token=ace7cd81-4a7c-4d84-a983-b838a7f6b860"
+        }
+      ],
+      "createdAt": "Sat Nov 19 2022",
+      "date": "2022-11-19",
+      "description": "Let's solve some common interview problems by using Javascript",
+      "id": "-NHEtdcZWJ97NRk_2Mf5",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2FHow-to-Think-Like-a-Programmer.png___708How-to-Think-Like-a-Programmer.png?alt=media&token=ffe540c8-d046-43bf-8de8-c5fd839fa330",
+      "name": "Problem Solving - 2",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:00"
+      },
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NEzkEjDlQ1xiXeB2Hm1"
+      ],
+      "url": "https://meet.google.com/qbw-ktnp-nug",
+      "views": 43
+    },
+    "-NHEuR6LeNISXTpK2Ekg": {
+      "attachedFiles": [
+        {
+          "name": "Source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fsource%20code.zip___941source%20code.zip?alt=media&token=ffff038a-b259-4de7-81ba-0f6d5ecc3e91"
+        }
+      ],
+      "createdAt": "Sat Nov 19 2022",
+      "date": "2022-11-20",
+      "description": "Let's understand the basic concept of React and single page application (SPA)",
+      "id": "-NHEuR6LeNISXTpK2Ekg",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2F1__Z2W8urXttbKVBaryY9PfQ.png___6601__Z2W8urXttbKVBaryY9PfQ.png?alt=media&token=d35d2f23-bb3b-4cc6-98f2-e6adde2383be",
+      "name": "React JS - Getting Started",
+      "sessionTiming": {
+        "end": "23:30",
+        "start": "22:30"
+      },
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://meet.google.com/mqy-yesv-kbt",
+      "views": 47
+    },
+    "-NHoZ70AEAXTiXe86nbu": {
+      "attachedFiles": [
+        {
+          "name": "Source Code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fsource_code.zip___766source_code.zip?alt=media&token=8f8edb46-696b-43a0-8b37-c694e6e0a93a"
+        }
+      ],
+      "createdAt": "Sat Nov 26 2022",
+      "date": "2022-11-26",
+      "description": "Lets create a basic todo list app by using React JS",
+      "id": "-NHoZ70AEAXTiXe86nbu",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2Freact-component-lifecycle-methods-graphic_.png___839react-component-lifecycle-methods-graphic_.png?alt=media&token=2be1cadc-add0-48a7-b809-8ccf5426edf4",
+      "name": "React JS - Components",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:30"
+      },
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://meet.google.com/peq-bnww-npo",
+      "views": 71
+    },
+    "-NI1kq19CHe9rQ4abXuI": {
+      "attachedFiles": [
+        {
+          "name": "JS Interview Questions PDF",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fjs%20interview%20quest.pdf___666js%20interview%20quest.pdf?alt=media&token=738dd0b2-7c06-4224-8c26-dc0739e7d0c5"
+        },
+        {
+          "name": "Code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fscript.js___153script.js?alt=media&token=e795299a-e911-4f57-b03a-414fde7e4597"
+        }
+      ],
+      "createdAt": "Tue Nov 29 2022",
+      "date": "2022-12-03",
+      "description": "Let's cover some basic JS questions for interview",
+      "id": "-NI1kq19CHe9rQ4abXuI",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2Finterview-1018333_1920%20(1).png___454interview-1018333_1920%20(1).png?alt=media&token=a1d0db4f-4b04-45a8-a153-10a75417309e",
+      "name": "Javascript  Interview Preparation",
+      "sessionTiming": {
+        "end": "23:00",
+        "start": "21:00"
+      },
+      "tags": [
+        "-NBOw13Np-GlNsZr1I43",
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBOvqGfehfBnpKK-QwO",
+        "-NEzkEjDlQ1xiXeB2Hm1"
+      ],
+      "url": "https://meet.google.com/rmq-bmvw-iip",
+      "videoUrl": "",
+      "views": 84
+    },
+    "-NIMeydSrr8KoppC1dtC": {
+      "attachedFiles": [
+        {
+          "name": "Source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fsource_code.zip___133source_code.zip?alt=media&token=9a2795c1-411c-468f-b926-0f62a9ecd6f2"
+        },
+        {
+          "name": "Wireframes",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fwireframes.zip___885wireframes.zip?alt=media&token=79891a71-e9e1-49b8-8e13-98c510aa2d7b"
+        }
+      ],
+      "createdAt": "Sat Dec 03 2022",
+      "date": "2022-12-04",
+      "description": "Let's dive deeper in React component by making functional components and hooks",
+      "id": "-NIMeydSrr8KoppC1dtC",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2FScreenshot%202022-12-04%20at%2010.46.35%20PM.png?alt=media&token=8f307d81-d656-4d1c-88ce-b3699a39ba24",
+      "name": "React JS - Functional Components",
+      "sessionTiming": {
+        "end": "21:00",
+        "start": "20:00"
+      },
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://meet.google.com/udq-vywf-syo",
+      "videoUrl": "",
+      "views": 40
+    },
+    "-NJ0grF4XD3yfHirYHpE": {
+      "attachedFiles": [
+        {
+          "name": "Source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fsrccode.zip___700srccode.zip?alt=media&token=1199c6b4-4c36-40f3-8587-7a4d27fe8a6e"
+        }
+      ],
+      "createdAt": "Sun Dec 11 2022",
+      "date": "2022-12-11",
+      "description": "Let's understand how react router works and how can we fetch data from the API by using axios",
+      "id": "-NJ0grF4XD3yfHirYHpE",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2Ftwitterimage.jpg___403twitterimage.jpg?alt=media&token=4413c35b-3465-42ca-9d4d-d94a10844260",
+      "name": "React - Router, Axios, Hooks",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:45"
+      },
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN"
+      ],
+      "url": "https://meet.google.com/oco-byge-wpi",
+      "views": 39
+    },
+    "-NJVAhN_W1hLPfGsuRdA": {
+      "attachedFiles": [
+        {
+          "name": "Source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fjira.zip___980jira.zip?alt=media&token=db894a6c-7c45-4937-b9e3-6c571d5f35da"
+        }
+      ],
+      "createdAt": "Sat Dec 17 2022",
+      "date": "2022-12-17",
+      "description": "Let's create app like jira board by using React JS and firebase for the backend",
+      "id": "-NJVAhN_W1hLPfGsuRdA",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2FkE3b4TOXtlEYpwhRvtSMi87mkWPaTfzbWOC9.png___797kE3b4TOXtlEYpwhRvtSMi87mkWPaTfzbWOC9.png?alt=media&token=52a4c648-1f8a-4bdf-a550-e36dcf1ed0cd",
+      "name": "Firebase + React Crash Course",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "19:30"
+      },
+      "tags": [
+        "-NBOw88MxGKrjfgiVosw",
+        "-NBOxQ-ccbawyxhhhGN-",
+        "-NBP1hkvYXioRxuHc_SJ"
+      ],
+      "url": "https://meet.google.com/mxc-veem-hzk",
+      "views": 161
+    },
+    "-NJ_2jm-aRyQMawGTc9a": {
+      "createdAt": "Sun Dec 18 2022",
+      "date": "2022-12-18",
+      "description": "Let's discuss about everything we have learnt so far and clear doubts",
+      "id": "-NJ_2jm-aRyQMawGTc9a",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2FiStock-465347492-1920x1280.jpeg___341iStock-465347492-1920x1280.jpeg?alt=media&token=3812ef30-b81a-4dc6-b9b2-205b8cd1df2c",
+      "name": "Discussion and Doubt Session",
+      "sessionTiming": {
+        "end": "22:30",
+        "start": "21:00"
+      },
+      "tags": [
+        "-NBOveKa1j3vVsC9jPHN",
+        "-NBOziDkiV4qaMlcZWpF",
+        "-NBOxQ-ccbawyxhhhGN-"
+      ],
+      "url": "https://meet.google.com/sap-qqjs-kij",
+      "views": 31
+    },
+    "-NQLOg99Jjg4rgrOzPfk": {
+      "attachedFiles": [
+        {
+          "name": "Source code",
+          "url": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions-resources%2Fsource_code.zip___349source_code.zip?alt=media&token=05123a49-fe13-4d7f-bc9b-1117d44bae85"
+        }
+      ],
+      "createdAt": "Sun Mar 12 2023",
+      "date": "2023-03-12",
+      "description": "Let's understand some weird concepts of javascript",
+      "id": "-NQLOg99Jjg4rgrOzPfk",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/sessions%2Fimages%20(3).jpeg___315images%20(3).jpeg?alt=media&token=9213d2dd-ca21-4504-bc9b-2f2f110ab10a",
+      "name": "Javascript refresher ",
+      "sessionTiming": {
+        "end": "23:00",
+        "start": "22:00"
+      },
+      "tags": [
+        "-NBOziDkiV4qaMlcZWpF"
+      ],
+      "url": "https://meet.google.com/zxr-dhid-heh",
+      "views": 60
+    }
+  },
+  "tags": {
+    "-NBOveKa1j3vVsC9jPHN": {
+      "description": "React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components.",
+      "id": "-NBOveKa1j3vVsC9jPHN",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2FReact-icon.svg.png2022-09-07T21%3A50%3A04.880Z?alt=media&token=7530eb4d-969e-46d7-bf4a-879cff8ffcec",
+      "level": "Expert",
+      "name": "React"
+    },
+    "-NBOvqGfehfBnpKK-QwO": {
+      "description": "TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. ",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2FTypescript_logo_2020.svg.png2022-09-07T21%3A50%3A59.507Z?alt=media&token=20fdfd2a-6572-4dfa-9625-92d885b786e2",
+      "level": "Medium",
+      "name": "Typescript"
+    },
+    "-NBOw13Np-GlNsZr1I43": {
+      "description": "Angular is a TypeScript-based free and open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations. ",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F5847ea22cef1014c0b5e4833.png2022-09-07T21%3A51%3A48.267Z?alt=media&token=5bafd23a-fa37-478a-b69c-892aa8058155",
+      "level": "Medium",
+      "name": "Angular"
+    },
+    "-NBOw88MxGKrjfgiVosw": {
+      "description": "Redux is an open-source JavaScript library for managing and centralizing application state. It is most commonly used with libraries such as React or Angular for building user interfaces.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F5848309bcef1014c0b5e4a9a.png2022-09-07T21%3A52%3A17.475Z?alt=media&token=dc553302-18df-4a3e-8251-3d7538ce0d18",
+      "level": "Medium",
+      "name": "Redux"
+    },
+    "-NBOwYirgL3TKPAY7BNj": {
+      "description": "RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code. This project is a rewrite of Reactive-Extensions/RxJS with better performance, better modularity, better debuggable call stacks, while staying mostly backwards compatible, with some breaking changes that reduce the API surface",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F1_wX5E5_Yf-D5m_FBWWFA8lw.png2022-09-07T21%3A54%3A04.564Z?alt=media&token=626f7c53-6419-4c58-9b20-760c9d6fb0bd",
+      "level": "Medium",
+      "name": "RxJS"
+    },
+    "-NBOwhZmCwybh6YlQVSy": {
+      "description": "Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on a JavaScript Engine and executes JavaScript code outside a web browser, which was designed to build scalable network applications. ",
+      "id": "-NBOwhZmCwybh6YlQVSy",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2Fnodejs-logo-FBE122E377-seeklogo.com.png2022-09-07T21%3A54%3A46.658Z?alt=media&token=77c98739-4caa-46ca-9b71-256df5164854",
+      "level": "Medium",
+      "name": "Node JS"
+    },
+    "-NBOxH4cSJfTFEDTn2wE": {
+      "description": "Ionic is a complete open-source SDK for hybrid mobile app development created by Max Lynch, Ben Sperry, and Adam Bradley of Drifty Co. in 2013. The original version was released in 2013 and built on top of AngularJS and Apache Cordova.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F62a7475d223343fbc2207cff.png2022-09-07T21%3A57%3A16.343Z?alt=media&token=35b45df6-343b-4623-82ef-31b112e111af",
+      "level": "Medium",
+      "name": "Ionic"
+    },
+    "-NBOxQ-ccbawyxhhhGN-": {
+      "description": "Firebase is a platform developed by Google for creating mobile and web applications. It was originally an independent company founded in 2011. In 2014, Google acquired the platform and it is now their flagship offering for app development.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F5847f40ecef1014c0b5e488a.png2022-09-07T21%3A57%3A52.801Z?alt=media&token=3ff744fb-5c31-4405-89fe-e3370750f014",
+      "level": "Medium",
+      "name": "Firebase"
+    },
+    "-NBOyEn07r9V8HY8Z8RR": {
+      "description": "Data structure is a storage that is used to store and organize data. It is a way of arranging data on a computer so that it can be accessed and updated efficiently and In computer programming terms, an algorithm is a set of well-defined instructions to solve a particular problem. It takes a set of input(s) and produces the desired output.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2FData-structure-and-algorithms.png2022-09-07T22%3A01%3A25.710Z?alt=media&token=2542007b-82cd-4581-b722-b94745d81182",
+      "level": "Medium",
+      "name": "Data Structure & Algorithms"
+    },
+    "-NBOya-Mih47guU7k-Ll": {
+      "description": "Git is free and open source software for distributed version control: tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F25231.png2022-09-07T22%3A02%3A59.833Z?alt=media&token=a62cba92-42fc-4991-9cd0-dee2768eac3d",
+      "level": "Medium",
+      "name": "Git"
+    },
+    "-NBOz4Hpqg_GGgHWQDEF": {
+      "description": "Design patterns are typical solutions to common problems\nin software design. Each pattern is like a blueprint\nthat you can customize to solve a particular\ndesign problem in your code.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2FScreenshot%202022-09-08%20at%203.34.38%20AM.png2022-09-07T22%3A05%3A05.451Z?alt=media&token=340f8a05-1731-4477-801b-afcf1e2af6be",
+      "level": "Medium",
+      "name": "Design Patterns"
+    },
+    "-NBOzQqHDFVlyBBTk6Pa": {
+      "description": "OOP is a programming paradigm based on the concept of \"objects\", which can contain data and code: data in the form of fields, and code, in the form of procedures. A common feature of objects is that procedures are attached to them and can access and modify the object's data fields.",
+      "id": "-NBOzQqHDFVlyBBTk6Pa",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F0_5Ype7VzS9KoT5gi8.jpeg2022-09-07T22%3A06%3A39.993Z?alt=media&token=ab1adeda-ebf6-4538-b71a-115e6987da7a",
+      "level": "Medium",
+      "name": "OOP"
+    },
+    "-NBOziDkiV4qaMlcZWpF": {
+      "description": "JavaScript, often abbreviated JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2FJavaScript-logo.png2022-09-07T22%3A07%3A53.003Z?alt=media&token=424ab6dc-5f2b-47be-9bf6-a593a68f6177",
+      "level": "Medium",
+      "name": "Javascript"
+    },
+    "-NBP-4wFGhGUTSBm4XXI": {
+      "description": "Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. The service has both free and premium tiers. The software that hosts the containers is called Docker Engine. It was first started in 2013 and is developed by Docker, Inc",
+      "id": "-NBP-4wFGhGUTSBm4XXI",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2Fvertical-logo-monochromatic.webp2022-09-07T22%3A09%3A29.389Z?alt=media&token=4151dde7-14e8-4007-8598-bc44b268d20c",
+      "level": "Basic",
+      "name": "Docker"
+    },
+    "-NBP-Dtw93z9vNll6gGN": {
+      "description": "Kubernetes is an open-source container orchestration system for automating software deployment, scaling, and management. Google originally designed Kubernetes, but the Cloud Native Computing Foundation now maintains the project.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F58480a44cef1014c0b5e4917.png2022-09-07T22%3A10%3A09.592Z?alt=media&token=2738f86e-6321-4706-83c0-1615944db63a",
+      "level": "Basic",
+      "name": "Kubernettes"
+    },
+    "-NBP1A1DdrK0k8R0rSHX": {
+      "description": "A microservice architecture – a variant of the SOA structural style – arranges an application as a collection of loosely-coupled services. In a microservice architecture, services are fine-grained and the protocols are lightweight. The goal is that teams can bring their services to life independent of others.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2Fimg01.jpeg2022-09-07T22%3A18%3A34.380Z?alt=media&token=906479ad-69e1-4a71-80cf-9636d579351d",
+      "level": "Basic",
+      "name": "Microservices"
+    },
+    "-NBP1MUdVcaAuURXispK": {
+      "description": "The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets and scripting languages such as JavaScript.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F174854.png2022-09-07T22%3A19%3A28.949Z?alt=media&token=a7bbc835-9e5e-4c8f-bf01-db7dfcd255a6",
+      "level": "Medium",
+      "name": "HTML"
+    },
+    "-NBP1X20WMOeWHL8_zY6": {
+      "description": "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript. ",
+      "id": "-NBP1X20WMOeWHL8_zY6",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F464-4640184_css3-png-download-css-icon-transparent-png.png2022-09-07T22%3A20%3A12.144Z?alt=media&token=a9df399f-5724-40af-8a0e-4a77d5a6da97",
+      "level": "Medium",
+      "name": "CSS"
+    },
+    "-NBP1hkvYXioRxuHc_SJ": {
+      "description": "Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains HTML, CSS and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2Fbootstrap-logo.png2022-09-07T22%3A21%3A00.058Z?alt=media&token=f6556aa6-80c7-4e56-a72e-24ec5f491137",
+      "level": "Medium",
+      "name": "Bootstrap"
+    },
+    "-NBP1wrywYrJ_vvIna1H": {
+      "description": "Bulma is a free, open source framework that provides ready-to-use frontend components that you can easily combine to build responsive web interfaces.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2F5cvui5nfqaq25j97lox0.webp2022-09-07T22%3A22%3A02.082Z?alt=media&token=c57a7198-77c3-4f12-bc9e-fdb63c0eb67f",
+      "level": "Medium",
+      "name": "Bulma CSS"
+    },
+    "-NBTV_j8mfbxYn1Sahzc": {
+      "description": "Laravel is a free and open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony. ",
+      "id": "-NBTV_j8mfbxYn1Sahzc",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2Flaravel-featured.png2022-09-08T19%3A09%3A58.386Z?alt=media&token=5e65f7e5-39b4-449d-a6a0-1ae4c83abe0e",
+      "level": "Basic",
+      "name": "PHP Laravel"
+    },
+    "-NEzkEjDlQ1xiXeB2Hm1": {
+      "description": "Problem solving is the process of achieving a goal by overcoming obstacles, a frequent part of most activities. Problems in need of solutions range from simple personal tasks to complex issues in business and technical fields.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/personal-36b0f.appspot.com/o/tags%2Fdownload.png___198download.png?alt=media&token=c4a4a7e0-c74b-425e-a914-12bf5421f0a5",
+      "level": "Medium",
+      "name": "Problem solving"
+    }
+  },
+  "visitor": {
+    "-N_3vGn8IBYi7BzqN92W": {
+      "city": "Santa Clara",
+      "country": "United States",
+      "date": "2023-07-11T12:28:57.433Z",
+      "ip": "65.154.226.167**PRASHANT**"
+    },
+    "-NaCGpUdTG-UaJivndA2": {
+      "city": "Haidian",
+      "country": "China",
+      "date": "2023-07-25T13:40:10.345Z",
+      "ip": "117.50.170.119**PRASHANT**"
+    },
+    "-NaCGqTrjNtVcBrLbGvc": {
+      "city": "Haidian",
+      "country": "China",
+      "date": "2023-07-25T13:40:14.390Z",
+      "ip": "117.50.170.119**PRASHANT**"
+    },
+    "-NaEuGHwBmOAKswCUuZ_": {
+      "city": "Ashburn",
+      "country": "United States",
+      "date": "2023-07-26T01:56:04.403Z",
+      "ip": "54.147.120.52**PRASHANT**"
+    },
+    "-NaQ2ME4zEa49uCURZF9": {
+      "city": "Portland",
+      "country": "United States",
+      "date": "2023-07-28T05:51:37.412Z",
+      "ip": "44.227.127.2**PRASHANT**"
+    },
+    "-NcHzbrPwNZOjzx7rhQf": {
+      "city": "Santa Clara",
+      "country": "United States",
+      "date": "2023-08-20T12:49:42.872Z",
+      "ip": "65.154.226.170**PRASHANT**"
+    },
+    "-NcHzfvrTLfcsKJBTs3z": {
+      "city": "Dallas",
+      "country": "United States",
+      "date": "2023-08-20T12:49:59.556Z",
+      "ip": "205.169.39.198**PRASHANT**"
+    },
+    "-NcPJ4yVsyANpCe0fBIC": {
+      "city": "Forest City",
+      "country": "United States",
+      "date": "2023-08-21T22:56:29.599Z",
+      "ip": "173.252.127.15**PRASHANT**"
+    },
+    "-NcfI4oAB7DIQ7laJw4F": {
+      "city": "Portland",
+      "country": "United States",
+      "date": "2023-08-25T06:05:39.467Z",
+      "ip": "35.165.215.140**PRASHANT**"
+    },
+    "-NdZ-DPsmZ6yaFRcSmjR": {
+      "city": "Ajmer",
+      "country": "India",
+      "date": "2023-09-05T06:21:35.285Z",
+      "ip": "157.38.40.109**PRASHANT**"
+    }
+  }
+}

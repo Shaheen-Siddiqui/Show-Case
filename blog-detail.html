@@ -1,0 +1,161 @@
+<!--========================================================= 
+Item Name: Masterly - Personal Portfolio One Page HTML Template.
+Author: ashishmaraviya
+Version: 2
+Copyright 2023
+Author URI: https://themeforest.net/user/ashishmaraviya
+============================================================-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Personal Portfolio.</title>
+    <meta name="keywords"
+        content="personal portfolio, cv, resume, agency, bootstrap, clean, cv, designer, developer, freelancer, modern, one page portfolio, onepage, personal portfolio, responsive, resume, vcard" />
+    <meta name="description" content="Best personal portfolio modern html template.">
+    <meta name="author" content="sanno">
+
+    <!-- site Favicon -->
+    <link rel="icon" href="assets/img/favicon/favicon.png" sizes="32x32" />
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" href="assets/css/plugins/animate.css" />
+    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/plugins/jquery.fancybox.min.css" />
+
+    <!-- Main Style -->
+    <link rel="stylesheet" id="main_style" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" class="dark-mode" href="assets/css/dark.css">
+
+</head>
+
+<body class="body-bg">
+    <div id="blog-container"></div>
+</body>
+
+
+
+<style>
+    .blog-info {
+        margin-top: 30px;
+        color: white;
+        font-size: 19px;
+        padding: 4rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+
+    .blog-info img {
+        height: 400px;
+        object-fit: cover;
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .blog-info h2 {
+        font-size: 50px;
+        font-weight: bolder;
+        margin-top: 10px;
+        color: white;
+        text-align: center;
+        text-decoration: underline;
+
+    }
+
+    .blog-info p {
+        /* font-size: 14px; */
+        margin-top: 10px;
+        color: whitesmoke;
+        text-align: center;
+    }
+
+    pre {
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+        border-left: 10px solid teal;
+        border-right: 10px solid teal;
+        color: black;
+    }
+
+    .blog-content {
+        padding: 0 200px;
+    }
+
+    @media only screen and (max-width: 991px) {
+        .blog-info {
+            margin-top: 10px;
+            color: white;
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .blog-info img {
+            height: 500px;
+            object-fit: cover;
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .blog-info h2 {
+            font-size: 30px;
+            font-weight: 900;
+            margin-top: 10px;
+            color: white;
+            text-align: center;
+
+        }
+
+        .blog-info p {
+            /* font-size: 14px; */
+            margin-top: 10px;
+            color: whitesmoke;
+            text-align: center;
+        }
+
+        pre {
+            background-color: white;
+            padding: 5px;
+            border-radius: 20px;
+            border-left: 10px solid teal;
+            border-right: 10px solid teal;
+            color: black;
+        }
+
+        .blog-content {
+            padding: 0;
+        }
+    }
+</style>
+<!-- <script src="./custom/index.js"></script> -->
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogID = urlParams.get('id');
+
+    const getBlogById = async () => {
+        const res = await fetch('./custom/data.json');
+        const { blogs } = await res.json();
+        constructHtml(blogs[blogID]);
+    }
+
+    const constructHtml = (blog) => {
+        const element = document.querySelector('#blog-container');
+        element.innerHTML = `
+        <section class="blog-info">
+            <img src="${blog.imageUrl}" alt=""/>
+            <h2>${blog.name}</h2>
+            <p>${blog.description}</p>
+            <div class="blog-content">${blog.content}</div>
+        </section>
+        `
+    }
+
+    getBlogById()
+</script>
+
+</html>

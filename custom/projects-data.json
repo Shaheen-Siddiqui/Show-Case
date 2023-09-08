@@ -1,0 +1,85 @@
+[
+   {
+      "description": "From an insightful dashboard displaying stock overviews to department-specific inventory tracking and detailed product management, the app ensures seamless control. Experience hassle-free product addition, attribute management, and easy navigation to detailed product pages.",
+      "id": "1",
+      "ProjectLink":"https://2jh4wv.csb.app/",
+      "imageUrl": "./assets/project-image/Inventory-Management-App.png",
+      "name": "Inventory-Management-App",
+      "tags": [
+         "React",
+         "json",
+         "useContext",
+         "useReducer",
+         "hooks"
+      ]
+   },
+   {
+      "description": "decor-supermarket is the E-COMMERCE repository it's a comprehensive solution for building and managing online stores. It provides a scalable platform with essential features such as product catalog management, secure user authentication, shopping cart functionality and order management. The repository includes a user-friendly interface",
+      "id": "1",
+      "ProjectLink":"https://the-decor-supermarket.netlify.app/",
+      "imageUrl": "./assets/project-image/decor-supermarket.png",
+      "name": "The-Decor-SuperMarket",
+      "tags": [
+         "Javascript",
+         "ReactJS",
+         "npm-package",
+         "css-grid",
+         "hooks"
+      ]
+   },
+   {
+      "description": "Each book on the shelf has a control that allows users to select a different shelf. When a different shelf is chosen, the book seamlessly moves to the selected shelf. The control defaults to the current shelf of the book, ensuring a smooth and intuitive user experience.",
+      "id": "1",
+      "ProjectLink":"https://book-shelf-mcr1.netlify.app/",
+      "imageUrl": "./assets/project-image/Bookshelf-Application.png",
+      "name": "Bookshelf-Application",
+      "tags": [
+         "React",
+         "json",
+         "useContext",
+         "useReducer",
+         "hooks"
+      ]
+   },
+   {
+      "description": "Share Sphere is an Social Media application that Connect, Discover, and Share with ease. Experience a seamless social media platform where you can create, explore, and bookmark posts, customize your user profile, and enjoy authenticated interactions with a user feed sorted by date and trending topics",
+      "id": "1",
+      "ProjectLink":"https://share-sphere.netlify.app/",
+      "imageUrl": "./assets/project-image/share-sphere.png",
+      "name": "share-sphere",
+      "tags": [
+         "React",
+         "fontawesome",
+         "jwt-token",
+         "mockbee",
+         "mockman",
+         "react-hot-toast"
+      ]
+   },
+   {
+      "description": "This application allows users to filter snacks by product name or ingredients in a case-insensitive manner. It provides dynamic sorting functionality for all table headers, enabling users to arrange the data in ascending or descending order. making it easy for users to explore and find their favorite snacks.",
+      "id": "1",
+      "ProjectLink":"https://snack-table-shaheen.netlify.app/",
+      "imageUrl": "./assets/project-image/Snack-Table.png",
+      "name": "Snack-Table",
+      "tags": [
+         "Bootstrap",
+         "tableview",
+         "useContext",
+         "useReducer",
+         "hooks",
+         "ReactJS"
+      ]
+   },
+   {
+      "description": "explore various cuisines, discover restaurants with key details and prices, and delve into comprehensive restaurant details. Users can view ratings, reviews, and even contribute their own feedback through a convenient 'Add Review' button. The app ensures smooth navigation with a back button for easy return to the main page.",
+      "id": "1",
+      "ProjectLink":"https://review-restaurant-app.netlify.app/",
+      "imageUrl": "./assets/project-image/Review-Restaurants-App.png",
+      "name": "Review-Restaurants-App",
+      "tags": [
+         "vitejs",
+         "json"
+      ]
+   }
+]

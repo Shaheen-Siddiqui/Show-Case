@@ -1,0 +1,260 @@
+body {
+  background-color: #17181c !important;
+}
+body::-webkit-scrollbar-track {
+  background: #2c2f36 !important !important;
+}
+
+section {
+  background: #202126 !important;
+}
+
+.section-bg {
+  background: #202126 !important;
+}
+
+.section-title h2 {
+  color: #eee;
+}
+
+header {
+  background-color: #1b1d22 !important;
+}
+header .ms-social li a {
+  color: #fff;
+}
+
+.ms-news-section .ms-pagination ul .dots {
+  color: #fff;
+}
+
+.ms-contact-section form .form-group input, .ms-contact-section form .form-group textarea {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+}
+
+.ms-contact-section .ms-contact-detail .ms-box .info h3 {
+  color: #fff;
+}
+.ms-contact-section .ms-contact-detail .ms-box .info p {
+  color: #ccc;
+}
+.ms-contact-section form .form-group input, .ms-contact-section form .form-group textarea {
+  color: #bbb;
+}
+
+#overlay_shine {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.main-bg-black {
+  background: #2c2f36 !important;
+}
+
+.ms-btn {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+}
+.ms-btn:hover {
+  background: #17181c !important;
+  border-color: #2c2f36 !important;
+  color: #fff;
+}
+
+.ms-btn-1 {
+  background: #17181c !important;
+  border-color: #2c2f36 !important;
+  color: #fff;
+}
+.ms-btn-1:hover {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+}
+
+.ms-tool .ms-tool-btn {
+  background: #17181c !important;
+  border-color: #17181c !important;
+  color: #fff;
+}
+.ms-tool .ms-color, .ms-tool .ms-dark {
+  background-color: #2c2f36 !important;
+}
+
+.ms-tool .ms-tool-btn {
+  border-color: #2c2f36 !important;
+}
+
+.sidebar-title {
+  border-color: #2c2f36 !important;
+}
+.sidebar-title h5, .sidebar-title a {
+  color: #fff;
+}
+
+.ms-navigation ul li {
+  border-color: transparent;
+  background-color: transparent;
+}
+.ms-navigation ul li a {
+  color: #fff;
+}
+.ms-navigation ul li .noty span {
+  background: #000;
+}
+.ms-navigation ul li .noty span:after {
+  background-color: #000;
+}
+
+.main-bg {
+  background: #2c2f36 !important;
+}
+
+.ms-home .profile-img {
+  border-color: #17181c !important;
+}
+.ms-home .ms-detail {
+  border-color: #2c2f36 !important;
+}
+.ms-home .ms-detail .info h1 {
+  color: #fff;
+}
+.ms-home .ms-detail .info h2 {
+  color: #eee;
+}
+.ms-home .ms-detail .info p {
+  color: #bbb;
+}
+
+.ms-about-info ul li {
+  color: #bbb;
+}
+.ms-about-info ul li .title, .ms-about-info ul li b {
+  color: #bbb;
+}
+
+.ms-about-detail h4 {
+  color: #ccc;
+}
+.ms-about-detail .ms-text {
+  color: #bbb;
+}
+
+.ms-skill-progress h5 {
+  color: #ccc;
+}
+.ms-skill-progress .progress {
+  background: #202126 !important;
+  border: 1px solid #2c2f36 !important;
+}
+.ms-skill-progress .progress-done {
+  background: #2c2f36 !important;
+}
+.ms-skill-progress .progress-done span {
+  color: #fff;
+}
+
+.timeline-marker:after, .timeline-marker:before {
+  border-color: #2c2f36 !important;
+}
+
+.ms-cursor {
+  border: 1px solid #fff;
+}
+
+.ms-cursor-2 {
+  background-color: #fff;
+}
+
+.timeline-period-end:after {
+  border-color: #2c2f36 !important;
+}
+
+.service-box .main-box .box-front {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+}
+
+.ms-news-section .ms-pagination ul li a {
+  border-color: #2c2f36 !important;
+  color: #fff;
+}
+
+.box-back .btn {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+}
+.box-back .btn:hover {
+  background: #17181c !important;
+  color: #fff;
+}
+
+.flipper .content-wrap .svg_img path {
+  fill: #ccc;
+}
+
+.box-front .content-wrap h3 {
+  color: #ccc;
+}
+.box-front .content-wrap p {
+  color: #bbb;
+}
+.box-front .bg-img path {
+  fill: #ccc;
+}
+
+.education h4, .experiense h4 {
+  color: #ccc;
+}
+
+.timeline-info span {
+  color: #bbb;
+}
+
+.timeline-content p {
+  color: #bbb;
+}
+
+.achive .count_block {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+}
+.achive .count_block h3 {
+  color: #eee;
+}
+.achive .count_block p {
+  color: #bbb;
+}
+.achive .count_block .counter-icon path {
+  fill: #ccc;
+}
+
+.portfolio-tabs ul li {
+  color: #eee;
+}
+
+.mixitup-control-active {
+  color: #435da5 !important;
+}
+
+.hovereffect {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+}
+
+ .news-info {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+
+}
+ .news-info .detail h3 a {
+  color: #eee !important;
+}
+ .news-info .detail p {
+  color: #bbb !important;
+}
+
+.ms-box {
+  background: #2c2f36 !important;
+  border-color: #2c2f36 !important;
+}
+/*# sourceMappingURL=dark.css.map */
