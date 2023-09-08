@@ -2,7 +2,7 @@ body {
   background-color: #17181c !important;
 }
 body::-webkit-scrollbar-track {
-  background: #2c2f36 !important !important;
+  background: #2c2f36 !important;
 }
 
 section {
