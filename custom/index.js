@@ -48,13 +48,14 @@ const ProjectData = async () => {
         
         <div class="col-lg-4 col-md-6">
         <div class="news-info">
-            <figure class="news-img"><a href="./blog-detail.html?id=${project.id}"><img src="${project.imageUrl}"
-                        alt="news imag" class="blog-image"></a>
+        
+            <figure class="news-img">
+  <a target="_blank" href="${project.ProjectLink}"><img src="${project.imageUrl}"alt="news imag" class="blog-image"></a>
             </figure>
+
             <div class="detail">
-                    <h3 class="ellipse-1"><a href='${project.projectLink}'>${project.name}</a></h3>
+                <h3 class="ellipse-1"><a>${project.name}</a></h3>
                 <p class="ellipse-2">${project.description} </p>
-              
             </div>
         </div>
     </div>
