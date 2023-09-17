@@ -1,0 +1,23 @@
+{
+  "name": "Show-Case",
+  "version": "1.0.0",
+  "description": "Welcome to my Showcase Portfolio! This repository serves as a centralized hub where you can explore my projects, read my blogs, and learn more about my professional journey. It's a place where my work, experiences, and interests come together.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shaheen-Siddiqui/Show-Case.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shaheen-Siddiqui/Show-Case/issues"
+  },
+  "homepage": "https://github.com/Shaheen-Siddiqui/Show-Case#readme",
+  "dependencies": {
+    "@builder.io/partytown": "^0.8.1"
+  }
+}
